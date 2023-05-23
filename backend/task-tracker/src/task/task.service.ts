@@ -35,17 +35,17 @@ export class TaskService {
     	return this.connection.query(query);
 	}
 
-	getById(id: number) {
+	getById(taskId: number) {
 		const query = `SELECT t.id, title, t.description, t.priority, t.assignee, uas.display_name AS assignee_name, t.creator, ucr.display_name AS creator_name, t.created, t.updated, p.name AS project_name
 			FROM tasks t
 			INNER JOIN projects p ON t.project_key = p.key
 			INNER JOIN users uas ON uas.login = t.assignee
 			INNER JOIN users ucr ON ucr.login = t.assignee
 			WHERE t.id = $1;`;
-    	return this.connection.query(query, [id]);
+    	return this.connection.query(query, [taskId]);
 	}
 
-	editById(id: number, editTaskDto: EditTaskDto) {
+	editById(taskId: number, editTaskDto: EditTaskDto) {
 		let fields = "";
 		const params = [];
 
@@ -74,15 +74,61 @@ export class TaskService {
 			${fields}
 			updated = now()
 			WHERE id = $1;`;
-    	return this.connection.query(query, [id, ...params]);
+    	return this.connection.query(query, [taskId, ...params]);
 	}
 
-	removeById(id: number) {
+	removeById(taskId: number) {
 		const query = `DELETE FROM tasks WHERE id = $1;`;
-    	return this.connection.query(query, [id]);
+    	return this.connection.query(query, [taskId]);
 	}
 
-	doTransition(id: number): void {
+	editPriority(taskId: number, priority: number) {
+		const query = `UPDATE tasks
+			priority = $1
+			WHERE id = $2;`;
+    	return this.connection.query(query, [priority, taskId]);
+	}
+
+	assign(taskId: number, username: string) {
+		const query = `UPDATE tasks
+			assignee = $1
+			WHERE id = $2;`;
+    	return this.connection.query(query, [username, taskId]);
+	}
+
+
+	getComments(taskId: number) {
+		const query = `SELECT id, comment, updated, created
+			FROM task_comments
+			WHERE task_id = $1;`;
+    	return this.connection.query(query, [taskId]);
+	}
+
+	addComment(taskId: number, comment: string) {
+		const query = `INSERT INTO task_comments
+			(id, comment) VALUES
+			($1, $2, $3, $4);`;
+    	return this.connection.query(query, [taskId, comment]);
+	}
+
+	editComment(taskId: number, newComment: string) {
+		const query = `UPDATE task_comments
+			SET comment = $1
+			WHERE id = $2;`;
+    	return this.connection.query(query, [newComment, taskId]);
+	}
+
+	deleteComment(commentId: number) {
+		const query = `DELETE FROM task_comments
+			WHERE id = $1;`;
+    	return this.connection.query(query, [commentId]);
+	}
+
+	getTransitions(taskId: number) {
+
+	}
+
+	doTransition(id: number, transitionId: number) {
 		//TODO:
 		return null;
 	}

@@ -34,48 +34,53 @@ export class TaskController {
 
 
 
-	@Patch(':taskId/rate')
-	async editRating(@Param('taskId') id: string) {
-		return null;
+	@Patch(':taskId/priority')
+	async editPriority(@Param('taskId') id: number, @Body('priority') priority: number) {
+		return this.taskService.editPriority(id, priority);
 	}
 
 	@Patch(':taskId/assign/:username')
 	async assign(@Param('taskId') id: string, @Param('username') username: string) {
-		return null;
+		return this.taskService.assign(+id, username);
 	}
 
 
-	//TODO: вынести комментарии в отдельный под-модуль
+
 	@Get(':taskId/comments')
 	async getComments(@Param('taskId') id: string) {
-		return null;
+		return this.taskService.getComments(+id);
 	}
 
 	@Post(':taskId/comment')
-	async addComment(@Param('taskId') id: string, @Body('comment') comment: string) {
-		return null;
+	async addComment(@Param('taskId') id: number, @Body('comment') comment: string) {
+		return this.taskService.addComment(id, comment);
 	}
 
 	@Patch(':taskId/comment/:commentId')
-	async editCommentById(@Param('taskId') id: string, @Param('commentId') commentId: string, @Body('comment') comment: string) {
-		return null;
+	async editCommentById(@Param('taskId') id: number, @Param('commentId') commentId: string, @Body('comment') comment: string) {
+		return this.taskService.editComment(id, comment);
+	}
+
+	@Delete('comment/:commentId')
+	async deleteCommentById(@Param('commentId') commentId: number, @Body('comment') comment: string) {
+		return this.taskService.deleteComment(commentId);
 	}
 
 
 
 	@Get(':taskId/transitions')
 	async getTransitions(@Param('taskId') id: string) {
-		return null;
+		return this.taskService.getTransitions(+id);
 	}
 
 	@Patch(':taskId/doTransition')
-	async doTransition(@Param('taskId') id: string) {
-		this.taskService.doTransition(+id);
+	async doTransition(@Param('taskId') id: string, @Body('transitionId') transitionId: number) {
+		this.taskService.doTransition(+id, transitionId);
 	}
 
 
-	@Post(':taskId/attachment')
-	async addAttachment(@Param('taskId') id: string) {
-		return null;
-	}
+	// @Post(':taskId/attachment')
+	// async addAttachment(@Param('taskId') id: string) {
+	// 	return null;
+	// }
 }
