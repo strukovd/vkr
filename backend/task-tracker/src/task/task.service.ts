@@ -1,16 +1,25 @@
 import { Injectable } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
 import { CreateTaskDto } from './dto/create-task.dto';
 import { UpdateTaskDto } from './dto/update-task.dto';
 
 @Injectable()
 export class TaskService {
+	constructor(private readonly configService: ConfigService) {}
+
 	create(createTaskDto: CreateTaskDto) {
 		//TODO:
+		console.log(
+			this.configService.get("PG_CONTAINER_NAME")
+		);
 		return 'This action adds a new task';
 	}
 
 	getAll() {
 		//TODO:
+		console.log(
+			this.configService.get("PG_CONTAINER_NAME")
+		);
 		return `This action returns all task`;
 	}
 
