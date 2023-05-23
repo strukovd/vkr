@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
-import { ConfigModule } from '@nestjs/config';
+import { ConfigModule, ConfigService } from '@nestjs/config';
+import { TypeOrmModule } from '@nestjs/typeorm';
 import { TaskModule } from './task/task.module';
 
 @Module({
@@ -8,7 +9,25 @@ import { TaskModule } from './task/task.module';
 			isGlobal: true,
 			envFilePath: "../../.env"
 		}),
-		TaskModule],
+		ConfigModule.forRoot({isGlobal: true}),
+		TypeOrmModule.forRootAsync({
+			imports: [ConfigModule],
+			useFactory: (configService: ConfigService) => {
+				return {
+					type: 'postgres',
+					host: configService.get('PG_HOST'),
+					port: +configService.get('PG_PORT'),
+					username: configService.get('PG_USERNAME'),
+					password: configService.get('PG_PASSWORD'),
+					database: configService.get('PG_DATABASE_NAME'),
+					entities: []
+				};
+			},
+			inject: [ConfigService],
+		}),
+
+		TaskModule
+	],
 	controllers: [],
 	providers: [],
 })
