@@ -1,7 +1,7 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete, Put } from '@nestjs/common';
 import { TaskService } from './task.service';
 import { CreateTaskDto } from './dto/create-task.dto';
-import { UpdateTaskDto } from './dto/update-task.dto';
+import { EditTaskDto } from './dto/edit-task.dto';
 
 @Controller('task')
 export class TaskController {
@@ -23,7 +23,7 @@ export class TaskController {
 	}
 
 	@Patch(':taskId')
-	async editById(@Param('taskId') id: string, @Body() updateTaskDto: UpdateTaskDto) {
+	async editById(@Param('taskId') id: string, @Body() updateTaskDto: EditTaskDto) {
 		return this.taskService.editById(+id, updateTaskDto);
 	}
 
@@ -36,7 +36,7 @@ export class TaskController {
 
 	@Patch(':taskId/rate')
 	async editRating(@Param('taskId') id: string) {
-		return this;
+		return null;
 	}
 
 	@Patch(':taskId/assign/:username')
@@ -76,6 +76,6 @@ export class TaskController {
 
 	@Post(':taskId/attachment')
 	async addAttachment(@Param('taskId') id: string) {
-		this.taskService.doTransition(+id);
+		return null;
 	}
 }
