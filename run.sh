@@ -12,10 +12,11 @@ function run_postgresql() {
 			-e POSTGRES_PASSWORD=${PG_PASSWORD} \
 			-e POSTGRES_DB=${PG_DATABASE_NAME} \
 			-e "TZ=Asia/Bishkek" \
-			-v ./postgresql/backup/:/docker-entrypoint-initdb.d/ \
 			-v ./postgresql/cache/${PG_CACHE_FOLDER}:/var/lib/postgresql/data \
 			-v /etc/localtime:/etc/localtime \
 			postgres
+
+			# -v ./postgresql/backup/:/docker-entrypoint-initdb.d/ \
 	fi
 }
 
