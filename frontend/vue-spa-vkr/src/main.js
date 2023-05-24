@@ -2,6 +2,7 @@ import { createApp } from 'vue';
 import { createRouter, createWebHistory } from 'vue-router'
 import App from './App.vue';
 import Tasks from './pages/Tasks.vue';
+import Page404 from './pages/Page404.vue';
 import './styles/index.css';
 
 const router = createRouter({
@@ -12,8 +13,8 @@ const router = createRouter({
 			component: Tasks
 		},
 		{
-			path: "/start",
-			component: "",
+			path: "/:catchAll(.*)",
+			component: Page404
 		}
 	]
 });

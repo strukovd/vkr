@@ -1,61 +1,26 @@
 <template>
-	<aside >
+	<aside class="aside">
 		<nav>
-			<div class="">
-				<div class="logo-box">
-					<img src="@/assets/icons/tasks.svg" alt="">
-				</div>
-				<div class="caption-box">
-					Задачи
-				</div>
-			</div>
+			<RoundNavButton :src="require(`@/assets/icons/tasks.svg`)"></RoundNavButton>
+			<RoundNavButton :src="require(`@/assets/icons/subscribers.svg`)"></RoundNavButton>
 		</nav>
 	</aside>
 </template>
 
 <script>
+import RoundNavButton from './RoundNavButton.vue'
 
 export default {
-	name: 'TopNavBar',
 	components: {
-
+		RoundNavButton
 	}
 }
 </script>
 
 <style lang="scss" scoped>
-	#top-nav-bar {
-		background: #FAFAFACC;
-		height: 50px;
-		padding:0 1em;
-		display: flex;
-
-		.tnb-left {
-			display: flex;
-			flex-direction: row;
-		}
-
-		.tnb-right {
-			$INTERCEIL_MARGIN: .2em;
-
-			flex-grow: 1;
-			display: flex;
-			flex-direction: row;
-			justify-content: flex-end;
-			// margin: auto 0;
-
-			.ceil-searchbox {
-				margin:auto $INTERCEIL_MARGIN;
-			}
-
-			.ceil-user {
-				margin:0 $INTERCEIL_MARGIN;
-
-				&:hover {
-				background: #35455C22;
-				// background: #DADADA99;
-			}
-			}
-		}
+	.aside {
+		background: #fafafae6;
+		flex: 0 0 auto;
+		width: 50px;
 	}
 </style>

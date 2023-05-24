@@ -1,19 +1,19 @@
 <template>
-	<TopNavBar></TopNavBar>
+	<HeaderBar></HeaderBar>
 	<main id="main">
 		<RightPanel></RightPanel>
-		<vue-route></vue-route>
+		<router-view></router-view>
 	</main>
 </template>
 
 <script>
 import RightPanel from './components/RightPanel.vue';
-import TopNavBar from './components/TopNavBar.vue'
+import HeaderBar from './components/HeaderBar.vue'
 
 export default {
 	name: 'App',
 	components: {
-    TopNavBar,
+    HeaderBar,
     RightPanel
 }
 }
@@ -22,5 +22,6 @@ export default {
 <style>
 #main {
 	display: flex;
+    min-height: calc(100vh - 50px);
 }
 </style>
