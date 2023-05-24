@@ -1,26 +1,24 @@
 <template>
-	<header id="top-nav-bar" ref="top-nav-bar">
-		<section class="tnb-left"></section>
-		<section class="tnb-right">
-			<div class="ceil-searchbox">
-				<SearchBox></SearchBox>
+	<aside >
+		<nav>
+			<div class="">
+				<div class="logo-box">
+					<img src="@/assets/icons/tasks.svg" alt="">
+				</div>
+				<div class="caption-box">
+					Задачи
+				</div>
 			</div>
-			<div class="ceil-user">
-				<UserBox></UserBox>
-			</div>
-		</section>
-	</header>
+		</nav>
+	</aside>
 </template>
 
 <script>
-import SearchBox from "./SearchBox.vue";
-import UserBox from "./UserBox.vue";
 
 export default {
 	name: 'TopNavBar',
 	components: {
-		SearchBox,
-		UserBox
+
 	}
 }
 </script>

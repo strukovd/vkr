@@ -1,24 +1,26 @@
 <template>
 	<TopNavBar></TopNavBar>
+	<main id="main">
+		<RightPanel></RightPanel>
+		<vue-route></vue-route>
+	</main>
 </template>
 
 <script>
+import RightPanel from './components/RightPanel.vue';
 import TopNavBar from './components/TopNavBar.vue'
 
 export default {
 	name: 'App',
 	components: {
-		TopNavBar
-	}
+    TopNavBar,
+    RightPanel
+}
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+#main {
+	display: flex;
 }
 </style>

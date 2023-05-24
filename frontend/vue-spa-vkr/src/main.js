@@ -1,20 +1,20 @@
 import { createApp } from 'vue';
-import { createRouter, createWebHashHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
 import App from './App.vue';
+import Tasks from './pages/Tasks.vue';
 import './styles/index.css';
 
 const router = createRouter({
-	history: createWebHashHistory(),
+	history: createWebHistory(),
 	routes: [
 		{
 			path: "/",
-			component: ""
+			component: Tasks
 		},
 		{
 			path: "/start",
-			component: ""
+			component: "",
 		}
-		// здесь должны быть определены маршруты
 	]
 });
 
