@@ -26,7 +26,7 @@ export class TaskService {
 	}
 
 	getAll() {
-		const query = `SELECT t.id, title, t.description, t.priority, t.assignee, uas.display_name AS assignee_name, t.creator, ucr.display_name AS creator_name, t.created, t.updated, p.name AS project_name
+		const query = `SELECT t.id, title, t.description, t.priority, t.assignee, uas.display_name AS assignee_name, t.creator, ucr.display_name AS creator_name, t.created, t.updated, p.name AS project_name, p.img
 			FROM tasks t
 			INNER JOIN projects p ON t.project_key = p.key
 			INNER JOIN users uas ON uas.login = t.assignee
