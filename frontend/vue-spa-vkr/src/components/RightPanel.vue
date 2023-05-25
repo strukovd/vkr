@@ -1,8 +1,12 @@
 <template>
 	<aside class="aside">
 		<nav>
-			<RoundNavButton :src="require(`@/assets/icons/tasks.svg`)"></RoundNavButton>
-			<RoundNavButton :src="require(`@/assets/icons/subscribers.svg`)"></RoundNavButton>
+			<div class="wr-button">
+				<RoundNavButton :src="require(`@/assets/icons/tasks.svg`)"></RoundNavButton>
+			</div>
+			<div class="wr-button">
+				<RoundNavButton :src="require(`@/assets/icons/subscribers.svg`)"></RoundNavButton>
+			</div>
 		</nav>
 	</aside>
 </template>
@@ -22,5 +26,11 @@ export default {
 		background: #fafafae6;
 		flex: 0 0 auto;
 		width: 50px;
+
+		nav {
+			.wr-button {
+				padding:10px 0;
+			}
+		}
 	}
 </style>

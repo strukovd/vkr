@@ -21,7 +21,7 @@ export default {
 		border-radius: 50%;
 		height: 34px;
 		width: 34px;
-		margin: 10px auto;
+		margin: 0 auto;
 		display: flex;
 		transition:200ms all 0s ease;
 		&:hover {

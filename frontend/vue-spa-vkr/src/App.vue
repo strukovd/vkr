@@ -1,12 +1,12 @@
 <template>
 	<HeaderBar></HeaderBar>
 	<main id="main">
-		<div class="left-main">
+		<section class="left-section">
 			<RightPanel></RightPanel>
-		</div>
-		<div class="right-main">
+		</section>
+		<section class="right-section">
 			<router-view></router-view>
-		</div>
+		</section>
 	</main>
 </template>
 
@@ -27,5 +27,11 @@ export default {
 #main {
 	display: flex;
     min-height: calc(100vh - 50px);
+	.left-section {
+		display: flex; /*что бы вложенная панель заняла всю высоту*/
+	}
+	.right-section {
+		flex-grow: 1;
+	}
 }
 </style>
