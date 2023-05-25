@@ -1,67 +1,83 @@
 <template>
-	<ul>
-		test
-		<li v-for="(task) of tasks" :key="task.id">
-			<div class="title">{{ task.title }}</div>
-			<div class="desc"> {{ task.description }}</div>
-		</li>
-		<li>
-			<div class="title">{{ tasks.length?tasks[0].title:"" }}</div>
-			<div class="desc"> {{ tasks.length?tasks[0].description:"" }}</div>
-		</li>
-	</ul>
+	<div class="right-main">
+		<div v-for="task in tasks" :key="task.id" class="task">
+			<div class="task-info">
+			<img :src="task.projectImage" alt="Project Image" width="16" height="16" />
+			<div class="task-details">
+				<span class="task-id">{{ task.id }}</span>
+				<h3 class="task-title">{{ task.title }}</h3>
+				<div class="task-status">{{ task.status }}</div>
+				<div class="task-priority">{{ task.priority }}</div>
+			</div>
+			</div>
+		</div>
+	</div>
 </template>
 
 <script>
-import axios from 'axios';
-
-export default {
-	name: 'App',
-	components: {
-	},
-	data() {
+	export default {
+		data() {
 		return {
-			tasks: []
+			tasks: [
+			{
+				projectImage: "path/to/project-image.png",
+				id: 1,
+				title: "Task 1",
+				status: "In Progress",
+				priority: "High"
+			},
+			{
+				projectImage: "path/to/project-image.png",
+				id: 2,
+				title: "Task 2",
+				status: "Completed",
+				priority: "Medium"
+			},
+			// Add more tasks as needed
+			]
+		};
 		}
-	},
-	mounted() {
-		this.fetchTasks();
-	},
-	methods: {
-		async fetchTasks() {
-			axios
-				.get('http://localhost:3000/task')
-				.then((response) => {
-					this.tasks = response.data;
-				})
-				.catch((error) => {
-					console.error(error);
-				});
-		}
-	}
-}
+	};
 </script>
 
-<style lang="scss" scoped>
-	ul {
-		list-style: none;
-		padding: 0;
-		flex-grow: 1;
+<style scoped>
+	.task {
+		display: flex;
+		align-items: center;
+		margin-bottom: 10px;
+	}
 
-		li {
-			background: #fff;
-			border-bottom: 1px solid #f0f0f0;
-			padding: .5em 1em;
+	.task img {
+		margin-right: 10px;
+	}
 
-			.title {
-				font-size: 1.6em;
-				line-height: 1.4em;
-				color: #172B4D;
-			}
-			.desc {
-				color: #172b4d9c;
-				font-size: .8em;
-			}
-		}
+	.task-info {
+		display: flex;
+		align-items: center;
+	}
+
+	.task-details {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+	}
+
+	.task-id {
+		font-weight: bold;
+		margin-right: 10px;
+	}
+
+	.task-title {
+		margin: 0;
+		margin-right: 10px;
+	}
+
+	.task-status {
+		margin-right: 10px;
+		color: green; /* Customize the color based on the task status */
+	}
+
+	.task-priority {
+		color: red; /* Customize the color based on the task priority */
 	}
 </style>
