@@ -1,5 +1,8 @@
 <template>
-	<div>test</div>
+	<div>
+		<div id="transitions"></div>
+		<TaskDetails></TaskDetails>
+	</div>
 </template>
 
 <script>

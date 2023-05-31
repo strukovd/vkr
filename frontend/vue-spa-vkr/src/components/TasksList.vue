@@ -2,27 +2,26 @@
 	<div id="tasks-container">
 		<table style="background: #fff;">
 			<tbody>
-				<tr v-for="task in tasks" :key="task.id" class="task-row">
-					<td><img :src="task.img" alt="" width="16"/></td>
-					<td>{{ task.id }}</td>
-					<td>{{ task.title }}</td>
-					<td>status</td>
-					<td>{{ task.priority }}</td>
-				</tr>
+				<router-link v-for="task in tasks" :key="task.id" :to="`/task/${task.id}`" custom v-slot="{ navigate }">
+					<tr class="task-row" @click="navigate" @keypress.enter="navigate" role="link">
+						<td><img :src="task.img" alt="" width="16"/></td>
+						<td>{{ task.id }}</td>
+						<td>{{ task.title }}</td>
+						<td>status</td>
+						<td>{{ task.priority }}</td>
+					</tr>
+				</router-link>
+				<!-- <tr v-for="task in tasks" :key="task.id" class="task-row">
+					<router-link :to="`/task/${task.id}`">
+						<td><img :src="task.img" alt="" width="16"/></td>
+						<td>{{ task.id }}</td>
+						<td>{{ task.title }}</td>
+						<td>status</td>
+						<td>{{ task.priority }}</td>
+					</router-link>
+				</tr> -->
 			</tbody>
 		</table>
-		
-		<!-- <div v-for="task in tasks" :key="task.id" class="task">
-			<div class="task-info">
-			<img :src="task.img" alt="Project Image" width="16" height="16" />
-			<div class="task-details">
-				<span class="task-id">{{ task.id }}</span>
-				<h3 class="task-title">{{ task.title }}</h3>
-				<div class="task-status">status</div>
-				<div class="task-priority">{{ task.priority }}</div>
-			</div>
-			</div>
-		</div> -->
 	</div>
 </template>
 
