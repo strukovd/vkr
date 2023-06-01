@@ -2,7 +2,7 @@
 	<nav id="top-nav-bar">
 		<ul>
 			<li>Проекты</li>
-			<li>Список задач</li>
+			<li @click="$router.replace(`/`)">Список задач</li>
 		</ul>
 	</nav>
 </template>

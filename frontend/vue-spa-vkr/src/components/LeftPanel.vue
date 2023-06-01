@@ -2,13 +2,13 @@
 	<aside class="aside">
 		<nav>
 			<div class="wr-button">
-				<RoundNavButton :src="require(`@/assets/icons/tasks.svg`)"></RoundNavButton>
+				<RoundNavButton @click="$router.replace(`/`)" :src="require(`@/assets/icons/tasks.svg`)"></RoundNavButton>
 			</div>
 			<div class="wr-button">
-				<RoundNavButton :src="require(`@/assets/icons/subscribers.svg`)"></RoundNavButton>
+				<RoundNavButton @click="$router.replace(`/`)" :src="require(`@/assets/icons/subscribers.svg`)"></RoundNavButton>
 			</div>
 			<div class="wr-button">
-				<RoundNavButton :src="require(`@/assets/icons/chart.svg`)"></RoundNavButton>
+				<RoundNavButton @click="$router.replace(`/`)" :src="require(`@/assets/icons/chart.svg`)"></RoundNavButton>
 			</div>
 		</nav>
 	</aside>

@@ -1,6 +1,6 @@
 source ../.env
 
 # cat pg_dump.sql | docker exec -i ${PG_CONTAINER_NAME} psql -U ${PG_USERNAME}
-echo $PG_CONTAINER_NAME
 
-cat dump_26-05-2023_01_22_52.sql | docker exec -i ${PG_CONTAINER_NAME} psql -U ${PG_USERNAME}
+echo "DROP SCHEMA public CASCADE; CREATE SCHEMA public;" | docker exec -i ${PG_CONTAINER_NAME} psql -U ${PG_USERNAME} -d ${PG_DATABASE_NAME}
+cat dump_01-06-2023_19_20_30.sql | docker exec -i ${PG_CONTAINER_NAME} psql -U ${PG_USERNAME} -d ${PG_DATABASE_NAME}

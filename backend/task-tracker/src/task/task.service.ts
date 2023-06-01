@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { DataSource } from 'typeorm';
 import { CreateTaskDto } from './dto/create-task.dto';
@@ -26,7 +26,11 @@ export class TaskService {
 	}
 
 	getAll() {
-		const query = `SELECT t.id, title, t.description, t.priority, t.assignee, uas.display_name AS assignee_name, t.creator, ucr.display_name AS creator_name, t.created, t.updated, p.name AS project_name, p.img,
+		const query = `SELECT t.id, title, t.description, t.priority,
+					t.assignee, uas.display_name AS assignee_name, t.creator,
+					ucr.display_name AS creator_name,
+					TO_CHAR(t.created, 'DD.MM.YYYY') AS created, TO_CHAR(t.updated, 'DD.MM.YYYY') AS updated,
+					p.name AS project_name, p.img,
 					t.status,
 					s.name           AS status_name
 			FROM tasks t
@@ -48,8 +52,8 @@ export class TaskService {
 				   uas.display_name AS assignee_name,
 				   t.creator,
 				   ucr.display_name AS creator_name,
-				   t.created,
-				   t.updated,
+				   TO_CHAR(t.created, 'DD.MM.YYYY') AS created,
+				   TO_CHAR(t.updated, 'DD.MM.YYYY') AS updated,
 				   p.name           AS project_name,
 				   t.status,
 				   s.name           AS status_name
@@ -119,7 +123,10 @@ export class TaskService {
 
 
 	getComments(taskId: number) {
-		const query = `SELECT id, comment, updated, created
+		const query = `SELECT
+				id, comment,
+				TO_CHAR(updated, 'DD.MM.YYYY') AS updated,
+				TO_CHAR(created, 'DD.MM.YYYY') AS created,
 			FROM task_comments
 			WHERE task_id = $1;`;
     	return this.connection.query(query, [taskId]);
@@ -149,10 +156,29 @@ export class TaskService {
 
 	}
 
-	doTransition(taskId: number, transitionId: number) {
-		const query = `UPDATE tasks
-			SET status = $1
-			WHERE id = $2;`;
-    	return this.connection.query(query, [transitionId, taskId]);
+	async doTransition(taskId: number, transitionId: number) {
+		// Убедимся что текущая задача может перейти по выбранному переходу
+
+		// Если он исполнитель задачи
+		// И текущий статус задачи есть в записи требуемого перехода, в поле from_status
+		let query = `SELECT t.assignee, t.project_key, t.status AS cur_status, tr.from_status, tr.to_status
+		FROM tasks t
+		INNER JOIN transitions tr ON tr.id = $1
+		WHERE t.id = $2;`;
+    	const transitionInfo = await this.connection.query(query, [transitionId, taskId]);
+		if(Array.isArray(transitionInfo) && transitionInfo.length) {
+			const {assignee, project_key, cur_status, from_status, to_status} = transitionInfo[0];
+			if(cur_status !== from_status) {
+				throw new HttpException(`Не удалось осуществить переход!`, HttpStatus.BAD_REQUEST,
+					{description: `Запрашиваемый переход с текущего статуса (${cur_status}), на статус (${to_status}) - запрещен!`});
+			}
+
+			query = `UPDATE tasks SET status = $1, updated = now() WHERE id = $2`;
+			await this.connection.query(query, [to_status, taskId]);
+			return `Переход успешно осуществлен`;
+		}
+		else {
+			throw new HttpException(`Указанный переход (${transitionId}) не существует!`, HttpStatus.BAD_REQUEST);
+		}
 	}
 }

@@ -2,7 +2,7 @@
 	<HeaderBar></HeaderBar>
 	<main id="main">
 		<section class="left-section">
-			<RightPanel></RightPanel>
+			<LeftPanel></LeftPanel>
 		</section>
 		<section class="right-section">
 			<router-view></router-view>
@@ -11,13 +11,13 @@
 </template>
 
 <script>
-import RightPanel from './components/RightPanel.vue';
+import LeftPanel from './components/LeftPanel.vue';
 import HeaderBar from './components/HeaderBar.vue';
 
 export default {
 	components: {
 		HeaderBar,
-		RightPanel
+		LeftPanel
 	}
 }
 </script>
@@ -44,5 +44,4 @@ export default {
 
 Коммантарии
 Поиск
-Левая панель навигации
 -->

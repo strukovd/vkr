@@ -1,6 +1,6 @@
 <template>
 	<div id="wr-bct-button">
-		<div id="bct-button">Создать задачу</div>
+		<div id="bct-button" @click="$router.replace(`/createTask`)">Создать задачу</div>
 	</div>
 </template>
 

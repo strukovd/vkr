@@ -74,8 +74,9 @@ export class TaskController {
 	}
 
 	@Patch(':taskId/doTransition')
-	async doTransition(@Param('taskId') id: string, @Body('transitionId') transitionId: number) {
-		this.taskService.doTransition(+id, transitionId);
+	async doTransition(@Param('taskId') taskId: string, @Body("transitionId") transitionId: number) {
+		console.log(`taskId: ${taskId}, transitionId: ${JSON.stringify(transitionId)}`);
+		await this.taskService.doTransition(+taskId, transitionId);
 	}
 
 

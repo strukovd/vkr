@@ -23,19 +23,19 @@
 			<div class="customTable">
 				<div class="row">
 					<div>Исполнитель:</div>
-					<div>{{ task.assignee_name }} ({{ task.assignee }})</div>
+					<div class="user">{{ task.assignee_name }} ({{ task.assignee }})</div>
 				</div>
 				<div class="row">
 					<div>Автор:</div>
-					<div>{{ creator_name }} ({{ task.creator }})</div>
+					<div class="user">{{ task.creator_name }} ({{ task.creator }})</div>
 				</div>
 				<div class="row">
 					<div>Создано:</div>
-					<div>{{ task.created }}</div>
+					<div class="date">{{ task.created }}</div>
 				</div>
 				<div class="row">
 					<div>Обновлено:</div>
-					<div>{{ task.updated }}</div>
+					<div class="date">{{ task.updated }}</div>
 				</div>
 			</div>
 		</aside>
@@ -133,6 +133,18 @@ export default {
 
 				.statusId {
 					background: red;
+				}
+
+				.date {
+					color: #830e0e;
+					font-size: .8em;
+					font-family: monospace;
+					margin: auto 0;
+				}
+
+				.user {
+					font-size: .8em;
+					margin: auto 0;
 				}
 			}
 		}
