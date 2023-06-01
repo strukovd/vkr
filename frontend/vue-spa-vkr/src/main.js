@@ -1,10 +1,11 @@
 import { createApp } from 'vue';
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router';
 import App from './App.vue';
 import TasksPage from './pages/TasksPage.vue';
 import TaskDetailPage from './pages/TaskDetailPage.vue';
 import Page404 from './pages/Page404.vue';
 import './styles/index.css';
+import './styles/notification.scss';
 
 const router = createRouter({
 	history: createWebHistory(),
