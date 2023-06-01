@@ -8,6 +8,9 @@
 					<th>Название</th>
 					<th>Статус</th>
 					<th>Приоритет</th>
+					<th>Исполнитель</th>
+					<th>Создана</th>
+					<th>Автор</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -18,6 +21,9 @@
 						<td>{{ task.title }}</td>
 						<td>status</td>
 						<td><PriorityBadge :priority="task.priority"></PriorityBadge></td>
+						<td>user</td>
+						<td>19.02.2023</td>
+						<td>user</td>
 					</tr>
 				</router-link>
 			</tbody>
@@ -57,7 +63,7 @@ export default {
 	methods: {
 		async fetchTasks() {
 			axios
-				.get('http://localhost:3000/task')
+				.get(`http://localhost:3000/task`)
 				.then((response) => {
 					this.tasks = response.data;
 				})
