@@ -26,22 +26,43 @@ export class TaskService {
 	}
 
 	getAll() {
-		const query = `SELECT t.id, title, t.description, t.priority, t.assignee, uas.display_name AS assignee_name, t.creator, ucr.display_name AS creator_name, t.created, t.updated, p.name AS project_name, p.img
+		const query = `SELECT t.id, title, t.description, t.priority, t.assignee, uas.display_name AS assignee_name, t.creator, ucr.display_name AS creator_name, t.created, t.updated, p.name AS project_name, p.img,
+					t.status,
+					s.name           AS status_name
 			FROM tasks t
 			INNER JOIN projects p ON t.project_key = p.key
 			INNER JOIN users uas ON uas.login = t.assignee
 			INNER JOIN users ucr ON ucr.login = t.assignee
+			LEFT JOIN statuses s ON t.status = s.id
 			WHERE t.assignee = 'admin';`;
     	return this.connection.query(query);
 	}
 
 	getById(taskId: number) {
-		const query = `SELECT t.id, title, t.description, t.priority, t.assignee, uas.display_name AS assignee_name, t.creator, ucr.display_name AS creator_name, t.created, t.updated, p.name AS project_name
+		const query = `WITH task AS (
+			SELECT t.id,
+				   title,
+				   t.description,
+				   t.priority,
+				   t.assignee,
+				   uas.display_name AS assignee_name,
+				   t.creator,
+				   ucr.display_name AS creator_name,
+				   t.created,
+				   t.updated,
+				   p.name           AS project_name,
+				   t.status,
+				   s.name           AS status_name
 			FROM tasks t
-			INNER JOIN projects p ON t.project_key = p.key
-			INNER JOIN users uas ON uas.login = t.assignee
-			INNER JOIN users ucr ON ucr.login = t.assignee
-			WHERE t.id = $1;`;
+					 INNER JOIN projects p ON t.project_key = p.key
+					 INNER JOIN users uas ON uas.login = t.assignee
+					 INNER JOIN users ucr ON ucr.login = t.assignee
+					 LEFT JOIN statuses s ON t.status = s.id
+			WHERE t.id = $1
+		)
+		SELECT *,
+			   (SELECT json_agg(allowed_trans) FROM (SELECT * FROM transitions WHERE from_status = task.status) AS allowed_trans) AS allowed_transitions
+		FROM task;`;
     	return this.connection.query(query, [taskId]);
 	}
 
@@ -128,8 +149,10 @@ export class TaskService {
 
 	}
 
-	doTransition(id: number, transitionId: number) {
-		//TODO:
-		return null;
+	doTransition(taskId: number, transitionId: number) {
+		const query = `UPDATE tasks
+			SET status = $1
+			WHERE id = $2;`;
+    	return this.connection.query(query, [transitionId, taskId]);
 	}
 }
