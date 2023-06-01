@@ -24,6 +24,8 @@ export default {
 		margin: 0 auto;
 		display: flex;
 		transition:200ms all 0s ease;
+		cursor: pointer;
+
 		&:hover {
 			background: #c0c0c0;
 		}
@@ -32,6 +34,11 @@ export default {
 			width: 16px;
 			height: 16px;
 			margin: auto;
+
+			img {
+				width: 16px;
+				height: 16px;
+			}
 		}
 	}
 </style>

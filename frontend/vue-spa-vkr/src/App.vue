@@ -12,10 +12,9 @@
 
 <script>
 import RightPanel from './components/RightPanel.vue';
-import HeaderBar from './components/HeaderBar.vue'
+import HeaderBar from './components/HeaderBar.vue';
 
 export default {
-	name: 'App',
 	components: {
 		HeaderBar,
 		RightPanel
@@ -35,3 +34,15 @@ export default {
 	}
 }
 </style>
+
+
+<!-- TODO:
+Переходы
+Авторизация
+Создание задачи
+Графики
+
+Коммантарии
+Поиск
+Левая панель навигации
+-->

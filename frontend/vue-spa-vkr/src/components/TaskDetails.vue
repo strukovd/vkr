@@ -2,6 +2,7 @@
 	<div class="details-wrapper">
 		<article>
 			<h1 class="title">{{ task.title }}</h1>
+			<TransitionsBar @click="doTransition" :allowedTransitions="task.allowed_transitions"></TransitionsBar>
 			<div class="customTable">
 				<div class="row">
 					<div>Проект:</div>
@@ -9,7 +10,7 @@
 				</div>
 				<div class="row">
 					<div>Статус:</div>
-					<div>{{ task.status }}</div>
+					<StatusBadge :status="task.status_name"></StatusBadge>
 				</div>
 				<div class="row">
 					<div>Приоритет:</div>
@@ -44,7 +45,12 @@
 <script>
 import axios from 'axios';
 import PriorityBadge from './PriorityBadge.vue';
+import StatusBadge from './StatusBadge.vue';
+import TransitionsBar from './TransitionsBar.vue';
+
+
 export default {
+	components: { PriorityBadge, StatusBadge, TransitionsBar },
     mounted() {
         this.fetchTask();
     },
@@ -66,9 +72,8 @@ export default {
                 .catch((error) => {
                 console.error(error);
             });
-        }
-    },
-    components: { PriorityBadge }
+        },
+    }
 }
 </script>
 
@@ -82,6 +87,7 @@ export default {
 			box-shadow: 0 1px 4px rgba(0, 0, 0, 0.13);
 			padding: 1em;
 			margin-right:1em;
+			flex-grow: 1;
 
 			.title {
 				font-size: 1.6em;
@@ -91,6 +97,7 @@ export default {
 				border: 1px dashed #033d7440;
 				margin: .5em 0;
 				padding: .5em;
+				color: #172b4db5;
 			}
 		}
 
@@ -101,16 +108,31 @@ export default {
 		}
 
 		.customTable {
+			background: #90aacb1c;
+			border-radius: 4px;
+			// box-shadow: inset 0 0 4px 0 #172b4d1f;
+			box-shadow:0 0 2px 0 #172b4d1f;
+			margin: 1em 0;
+			padding:.4em 1em;
+
 			.row {
 				display: flex;
 				padding: .2em;
-				border-bottom: 1px solid #aaa;
 
-				:nth-child(1) {
-					color: #666;
+				&:not(:last-child) {
+					border-bottom: 1px solid #172b4d0d;
 				}
-				:nth-child(2) {
-					
+
+				>:nth-child(1) {
+					color: #172b4db5;
+					padding-right:.8em;
+				}
+				>:nth-child(2) {
+
+				}
+
+				.statusId {
+					background: red;
 				}
 			}
 		}

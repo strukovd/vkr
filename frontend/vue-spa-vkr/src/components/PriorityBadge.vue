@@ -41,12 +41,11 @@ export default {
 
 <style lang="scss">
 	.pb-highest {
-		background: #fd4f4f;
-		// background: linear-gradient(0deg, #bf360d, #e93a3a, #f56464); /* #dc6350 */
-		color: #7c0d0d;
+		background: #fd4f4f78;
+		color: #7c0d0da6;
 	}
 	.pb-critical {
-		background: linear-gradient(0deg, #f2ae5d, #f2ae5d, #f2ae5d);
+		background: #f2ae5da1;
 		color: #7e4f16;
 	}
 	.pb-alarming {
@@ -54,16 +53,18 @@ export default {
 		color: #786705;
 	}
 	.pb-act-soon {
-		background: linear-gradient(0deg, #79ba5e, #79ba5e, #79ba5e);
+		// background: linear-gradient(0deg, #79ba5e, #79ba5e, #79ba5e);
+		background: #79ba5e66;
 		color: #265a10;
 	}
 	.pb-lowest {
-		background: linear-gradient(0deg, #f6f6f6, #f6f6f6, #f6f6f6);
+		background: #2196f36e;
+		color: #0e4570;
 	}
 	.priorityBadge {
 		display: inline-block;
 		line-height: 1.6em;
-		padding: 0 2em;
+		padding: 0 1.2em;
 		border-radius: 4px;
 		font-size: 12px;
 		font-weight: 900;

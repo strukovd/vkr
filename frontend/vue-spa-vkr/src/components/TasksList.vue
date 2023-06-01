@@ -17,12 +17,12 @@
 				<router-link v-for="task in tasks" :key="task.id" :to="`/task/${task.id}`" custom v-slot="{ navigate }">
 					<tr class="task-row" @click="navigate" @keypress.enter="navigate" role="link">
 						<td><img :src="task.img" alt="" width="16"/></td>
-						<td>{{ task.id }}</td>
+						<td class="idCeil">{{ task.id }}</td>
 						<td>{{ task.title }}</td>
-						<td>status</td>
+						<td><StatusBadge :status="task.status_name"></StatusBadge></td>
 						<td><PriorityBadge :priority="task.priority"></PriorityBadge></td>
 						<td>user</td>
-						<td>19.02.2023</td>
+						<td class="dateCeil">{{ task.created }}</td>
 						<td>user</td>
 					</tr>
 				</router-link>
@@ -34,9 +34,10 @@
 <script>
 import axios from 'axios';
 import PriorityBadge from './PriorityBadge.vue';
+import StatusBadge from './StatusBadge.vue';
 
 export default {
-  components: { PriorityBadge },
+	components: { PriorityBadge, StatusBadge },
 	data() {
 		return {
 			tasks: [
@@ -46,13 +47,6 @@ export default {
 					title: "Task 1",
 					status: "In Progress",
 					priority: "High"
-				},
-				{
-					projectImage: "path/to/project-image.png",
-					id: 2,
-					title: "Task 2",
-					status: "Completed",
-					priority: "Medium"
 				},
 			]
 		};
@@ -98,6 +92,17 @@ export default {
 					line-height: 2em;
 					padding:0 10em;
 					cursor: pointer;
+
+					.idCeil {
+						font-family: monospace;
+						color: #0e4570;
+					}
+
+					.dateCeil {
+						color: #830e0e;
+						font-size: .8em;
+						font-family: monospace;
+					}
 
 					&:hover {
 						background: #f7f7f7;

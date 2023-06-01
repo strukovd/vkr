@@ -7,6 +7,9 @@
 			<div class="wr-button">
 				<RoundNavButton :src="require(`@/assets/icons/subscribers.svg`)"></RoundNavButton>
 			</div>
+			<div class="wr-button">
+				<RoundNavButton :src="require(`@/assets/icons/chart.svg`)"></RoundNavButton>
+			</div>
 		</nav>
 	</aside>
 </template>
