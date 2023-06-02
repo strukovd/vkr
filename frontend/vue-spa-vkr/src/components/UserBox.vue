@@ -1,12 +1,17 @@
 <template>
-	<div id="user-avatar-box">
-		<img src="@/assets/icons/user.svg" alt="">
-	</div>
+		<div v-if="displayUserBox" id="user-avatar-box">
+			<img src="@/assets/icons/user.svg" alt="">
+		</div>
 </template>
 
 <script>
 export default {
-  name: 'SearchBox'
+	name: 'SearchBox',
+	methods: {
+		displayUserBox() {
+			return this.isUserAuthenticated();
+		}
+	}
 }
 </script>
 
@@ -18,7 +23,6 @@ export default {
 
 		img {
 			margin: auto;
-
 			position: relative;
 		}
 	}

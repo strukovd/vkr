@@ -58,6 +58,7 @@ export default {
 		form {
 			table {
 				margin: auto;
+				width: 100%;
 
 				tr {
 					td{

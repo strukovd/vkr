@@ -48,15 +48,16 @@ router.beforeEach((to, from, next) => {
 });
 
 function isUserAuthenticated() {
-	if(sessionStorage.getItem('username') == "admin") {
-		return true;
-	}
-	else {
-		return false;
-	}
+	console.log(sessionStorage.getItem('username'));
+	const res = sessionStorage.getItem('username') === "admin";
+	console.log(res);
+	return res;
 }
 
 
 createApp(App)
 	.use(router)
+	.mixin({
+		isUserAuthenticated
+	})
 	.mount('#app');
