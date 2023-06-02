@@ -1,6 +1,6 @@
 <template>
-	<select ref="userSelect">
-		<option v-for="user of userList" :key="user.id" :value="user.id">{{ user.display_name }}</option>
+	<select v-model="username">
+		<option v-for="user of userList" :key="user.id" :value="user.login">{{ user.display_name }}</option>
 	</select>
 </template>
 
@@ -12,7 +12,8 @@ export default {
 	},
 	data() {
 		return {
-			userList: []
+			userList: [],
+			username: ""
 		};
 	},
 	methods: {

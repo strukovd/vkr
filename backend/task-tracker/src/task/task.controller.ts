@@ -9,7 +9,7 @@ export class TaskController {
 
 	@Post()
 	async create(@Body() createTaskDto: CreateTaskDto) {
-		return this.taskService.create(createTaskDto);
+		return await this.taskService.create(createTaskDto);
 	}
 
 	@Get()

@@ -1,5 +1,5 @@
 <template>
-	<select ref="projectSelect">
+	<select v-model="projectKey">
 		<option v-for="project of projectList" :key="project.key" :value="project.key">{{ project.name }}</option>
 	</select>
 </template>
@@ -12,7 +12,8 @@ export default {
 	},
 	data() {
 		return {
-			projectList: []
+			projectList: [],
+			projectKey: ''
 		};
 	},
 	methods: {

@@ -24,7 +24,7 @@
 					<td><span><UserSelect v-model="assignee"/></span></td>
 				</tr>
 				<tr>
-					<td colspan="2"><input type="submit"></td>
+					<td colspan="2"><input @click.prevent="sendForm" type="submit"></td>
 				</tr>
 			</table>
 		</form>
@@ -49,22 +49,27 @@ export default {
 		};
 	},
 	methods: {
+		sendForm() {
+			this.createTask();
+		},
 		createTask() {
 			axios
 				.post(`http://localhost:3000/task`, {
-					projectKey: "",
-					title: "",
-					description: "",
-					priority: 1,
-					assignee: "admin",
-					creator: "admin",
+					projectKey: this.projectKey,
+					title: this.title,
+					description: this.description,
+					priority: this.priority,
+					assignee: this.assignee,
+					creator: this.creator,
 				})
-				.then((response) => {
-					if (Array.isArray(response.data) && response.data.length) {
-						this.userList = response.data;
-					}
+				.then(() => {
+					Notification.success("Задача успешно создана!");
+					this.$router.push("/");
+					// if (Array.isArray(response.data) && response.data.length) {
+					// }
 				})
-					.catch((error) => {
+				.catch((error) => {
+					Notification.error(error);
 					console.error(error);
 				});
 		}

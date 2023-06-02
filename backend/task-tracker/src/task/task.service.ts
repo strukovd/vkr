@@ -11,18 +11,24 @@ export class TaskService {
 		private readonly connection: DataSource
 	) {}
 
-	create(createTaskDto: CreateTaskDto) {
+	async create(createTaskDto: CreateTaskDto) {
 		const query = `INSERT INTO tasks
-			(title, description, project_key, priority, assignee, creator)
-			VALUES ($1, $2, $3, $4, $5);`;
-    	return this.connection.query(query, [
+			(title, description, project_key, priority, assignee, status, creator)
+			VALUES ($1, $2, $3, $4, $5, $6, $7);`;
+		const params = [
 			createTaskDto.title,
 			createTaskDto.description,
 			createTaskDto.projectKey,
 			createTaskDto.priority,
 			createTaskDto.assignee,
-			createTaskDto.creator
-		]);
+			0,
+			"admin"
+		];
+
+		console.log(query);
+		console.log(JSON.stringify(params));
+
+    	return await this.connection.query(query, params);
 	}
 
 	getAll() {
@@ -37,8 +43,8 @@ export class TaskService {
 			INNER JOIN projects p ON t.project_key = p.key
 			INNER JOIN users uas ON uas.login = t.assignee
 			INNER JOIN users ucr ON ucr.login = t.assignee
-			LEFT JOIN statuses s ON t.status = s.id
-			WHERE t.assignee = 'admin';`;
+			LEFT JOIN statuses s ON t.status = s.id;
+			--WHERE t.assignee = 'admin';`;
     	return this.connection.query(query);
 	}
 
