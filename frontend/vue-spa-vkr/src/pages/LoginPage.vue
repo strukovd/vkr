@@ -35,7 +35,7 @@ export default {
 				this.$router.push("/");
 			}
 			else {
-				alert("bad");
+				Notification.error("Неверный логин или пароль");
 			}
 		}
 	}

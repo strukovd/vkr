@@ -5,10 +5,10 @@
 				<RoundNavButton @click="$router.replace(`/`)" :src="require(`@/assets/icons/tasks.svg`)"></RoundNavButton>
 			</div>
 			<div class="wr-button">
-				<RoundNavButton @click="$router.replace(`/`)" :src="require(`@/assets/icons/subscribers.svg`)"></RoundNavButton>
+				<RoundNavButton @click="$router.replace(`/users`)" :src="require(`@/assets/icons/subscribers.svg`)"></RoundNavButton>
 			</div>
 			<div class="wr-button">
-				<RoundNavButton @click="$router.replace(`/`)" :src="require(`@/assets/icons/chart.svg`)"></RoundNavButton>
+				<RoundNavButton @click="$router.replace(`/reports`)" :src="require(`@/assets/icons/chart.svg`)"></RoundNavButton>
 			</div>
 		</nav>
 	</aside>
