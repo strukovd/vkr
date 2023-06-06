@@ -76,6 +76,29 @@ export class TaskService {
     	return this.connection.query(query, [taskId]);
 	}
 
+	find(searchText: string) {
+		console.log(`searchText: ${searchText}`);
+		const query = `SELECT t.id, title, t.description, t.priority,
+					t.assignee, uas.display_name AS assignee_name, t.creator,
+					ucr.display_name AS creator_name,
+					TO_CHAR(t.created, 'DD.MM.YYYY') AS created, TO_CHAR(t.updated, 'DD.MM.YYYY') AS updated,
+					p.name AS project_name, p.img,
+					t.status,
+					s.name           AS status_name
+			FROM tasks t
+			INNER JOIN projects p ON t.project_key = p.key
+			INNER JOIN users uas ON uas.login = t.assignee
+			INNER JOIN users ucr ON ucr.login = t.assignee
+			LEFT JOIN statuses s ON t.status = s.id
+			WHERE
+				t.title ilike $1
+				OR t.description ilike $1
+				OR s.name ilike $1
+				OR ucr.display_name ilike $1
+			LIMIT 10;`;
+    	return this.connection.query(query, [`%${searchText}%`]);
+	}
+
 	editById(taskId: number, editTaskDto: EditTaskDto) {
 		let fields = "";
 		const params = [];
