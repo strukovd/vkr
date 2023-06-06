@@ -3,14 +3,13 @@
 		<table>
 			<thead>
 				<tr>
-					<th></th>
-					<th>ID</th>
-					<th>Название</th>
-					<th>Статус</th>
-					<th>Приоритет</th>
-					<th>Исполнитель</th>
-					<th>Создана</th>
-					<th>Автор</th>
+					<th @click="sortBy(`id`)" colspan="2" :class="{'up': sortedBy === 'id' && !sortedReverse, 'down': sortedBy === 'id' && sortedReverse}">ID</th>
+					<th @click="sortBy(`title`)" :class="{'up': sortedBy === 'title' && !sortedReverse, 'down': sortedBy === 'title' && sortedReverse}">Название</th>
+					<th @click="sortBy(`status_name`)" :class="{'up': sortedBy === 'status_name' && !sortedReverse, 'down': sortedBy === 'status_name' && sortedReverse}">Статус</th>
+					<th @click="sortBy(`priority`)" :class="{'up': sortedBy === 'priority' && !sortedReverse, 'down': sortedBy === 'priority' && sortedReverse}">Приоритет</th>
+					<th @click="sortBy(`assignee`)" :class="{'up': sortedBy === 'assignee' && !sortedReverse, 'down': sortedBy === 'assignee' && sortedReverse}">Исполнитель</th>
+					<th @click="sortBy(`created`)" :class="{'up': sortedBy === 'created' && !sortedReverse, 'down': sortedBy === 'created' && sortedReverse}">Создана</th>
+					<th @click="sortBy(`creator`)" :class="{'up': sortedBy === 'creator' && !sortedReverse, 'down': sortedBy === 'creator' && sortedReverse}">Автор</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -47,8 +46,10 @@ export default {
 					title: "Task 1",
 					status: "In Progress",
 					priority: "High"
-				},
-			]
+				}
+			],
+			sortedBy: null,
+			sortedReverse: false
 		};
 	},
 	mounted() {
@@ -64,6 +65,36 @@ export default {
 				.catch((error) => {
 					console.error(error);
 				});
+		},
+		sortBy(fieldName) {
+			if( Array.isArray(this.tasks) && this.tasks.length ) {
+				if(this.sortedBy === fieldName) {
+					this.sortedReverse = !this.sortedReverse;
+				}
+				else {
+					this.sortedBy = fieldName;
+					this.sortedReverse = false;
+				}
+
+				this.tasks.sort((a, b) => {
+					let res;
+					if( typeof a[fieldName] === "number" ) {
+						res = a[fieldName]-b[fieldName];
+					}
+					else if ( typeof a[fieldName] === "string" ) {
+						const lowerA = a[fieldName]?.toLocaleLowerCase();
+						const lowerB = b[fieldName]?.toLocaleLowerCase();
+						if(lowerA > lowerB) res = 1;
+						else if (lowerA < lowerB) res = -1;
+						else res = 0;
+					}
+
+					if(this.sortedReverse && res !== 0) res = -res;
+
+					this.sortedBy = fieldName;
+					return res;
+				});
+			}
 		}
 	}
 };
@@ -84,6 +115,31 @@ export default {
 			thead {
 				background: #fafafae6;
 				line-height: 2em;
+
+				tr {
+					th {
+						cursor:pointer;
+
+						&.up::before {
+							content: "▲";
+							color: #56657d;
+							font-size: .8em;
+							line-height: 1.2em;
+							margin: auto 0.2em auto 0;
+						}
+						&.down::before {
+							content: "▼";
+							color: #56657d;
+							font-size: .8em;
+							line-height: 1.2em;
+							margin: auto 0.2em auto 0;
+						}
+
+						&:hover {
+							background:#f5f5f5;
+						}
+					}
+				}
 			}
 			tbody {
 				.task-row {
