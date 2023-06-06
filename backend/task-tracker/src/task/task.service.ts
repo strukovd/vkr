@@ -14,14 +14,13 @@ export class TaskService {
 	async create(createTaskDto: CreateTaskDto) {
 		const query = `INSERT INTO tasks
 			(title, description, project_key, priority, assignee, status, creator)
-			VALUES ($1, $2, $3, $4, $5, $6, $7);`;
+			VALUES ($1, $2, $3,$4, $5, (SELECT from_status FROM transitions tr WHERE tr.project_key = $3 AND tr.first_status = true), $6);`;
 		const params = [
 			createTaskDto.title,
 			createTaskDto.description,
 			createTaskDto.projectKey,
 			createTaskDto.priority,
 			createTaskDto.assignee,
-			0,
 			"admin"
 		];
 
@@ -62,7 +61,8 @@ export class TaskService {
 				   TO_CHAR(t.updated, 'DD.MM.YYYY') AS updated,
 				   p.name           AS project_name,
 				   t.status,
-				   s.name           AS status_name
+				   s.name           AS status_name,
+				   t.project_key
 			FROM tasks t
 					 INNER JOIN projects p ON t.project_key = p.key
 					 INNER JOIN users uas ON uas.login = t.assignee
@@ -71,7 +71,7 @@ export class TaskService {
 			WHERE t.id = $1
 		)
 		SELECT *,
-			   (SELECT json_agg(allowed_trans) FROM (SELECT * FROM transitions WHERE from_status = task.status) AS allowed_trans) AS allowed_transitions
+			   (SELECT json_agg(allowed_trans) FROM (SELECT * FROM transitions tran WHERE tran.from_status = task.status AND tran.project_key = task.project_key) AS allowed_trans) AS allowed_transitions
 		FROM task;`;
     	return this.connection.query(query, [taskId]);
 	}
@@ -204,6 +204,10 @@ export class TaskService {
 
 			query = `UPDATE tasks SET status = $1, updated = now() WHERE id = $2`;
 			await this.connection.query(query, [to_status, taskId]);
+
+			query = `INSERT INTO task_move_history (task_id, from_status, to_status, created) VALUES ($1, $2, $3, now());`;
+			await this.connection.query(query, [taskId, from_status, to_status]);
+
 			return `Переход успешно осуществлен`;
 		}
 		else {

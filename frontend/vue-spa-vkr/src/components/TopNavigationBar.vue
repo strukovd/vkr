@@ -29,6 +29,11 @@ export default {
 				color: #777;
 				cursor: pointer;
 				padding:0 .6em;
+				transition:all 300ms ease 0s;
+
+				&:hover {
+					color: #333;
+				}
 			}
 		}
 	}

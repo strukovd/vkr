@@ -1,5 +1,5 @@
 <template>
-	<div class="transitionButton" @click="doTransition">{{ transitonName }}</div>
+	<div class="transitionButton" @click="doTransition"><span>{{ transitonName }}</span></div>
 </template>
 
 <script>
@@ -35,6 +35,7 @@ export default {
 
 <style lang="scss" scoped>
 	.transitionButton {
+		display: flex;
 		background: #f0f0f0;
 		line-height: 2em;
 		padding: 0 1em;
@@ -42,5 +43,18 @@ export default {
 		cursor: pointer;
 		font-size: .9em;
 		margin:0 .25em;
+		transition:all 300ms ease 0s;
+
+		&::before {
+			content:"➪";
+			// ⇨ ⇒
+			margin:auto;
+			padding-right:.6em;
+			color:#172b4d82;
+		}
+
+		&:hover {
+			background: #dbdbdb;
+		}
 	}
 </style>
