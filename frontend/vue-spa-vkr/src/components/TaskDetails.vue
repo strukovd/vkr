@@ -94,10 +94,13 @@ export default {
 			}
 
 			.description {
+				font-size: .9em;
 				border: 1px dashed #033d7440;
-				margin: .5em 0;
-				padding: .5em;
+				margin: 0.5em 0;
+				padding: 0.8em 1em;
 				color: #172b4db5;
+				background: #90aacb1c;
+				border-radius: 4px;
 			}
 		}
 
@@ -114,6 +117,7 @@ export default {
 			box-shadow:0 0 2px 0 #172b4d1f;
 			margin: 1em 0;
 			padding:.4em 1em;
+			border: 1px dashed #033d7440;
 
 			.row {
 				display: flex;
