@@ -1,10 +1,12 @@
 import { createApp } from 'vue';
 import { createRouter, createWebHistory } from 'vue-router';
+import VueApexCharts from "vue3-apexcharts";
 import App from './App.vue';
 import TasksPage from './pages/TasksPage.vue';
 import TaskDetailPage from './pages/TaskDetailPage.vue';
 import CreateTask from './pages/CreateTask.vue';
 import LoginPage from './pages/LoginPage.vue';
+import ReportsPage from './pages/ReportsPage.vue';
 import PageNotFound from './pages/PageNotFound.vue';
 import './styles/index.css';
 import './styles/notification.scss';
@@ -32,6 +34,14 @@ const router = createRouter({
 			component: LoginPage
 		},
 		{
+			path: "/users",
+			component: null
+		},
+		{
+			path: "/reports",
+			component: ReportsPage
+		},
+		{
 			path: "/:catchAll(.*)",
 			component: PageNotFound
 		}
@@ -57,6 +67,7 @@ function isUserAuthenticated() {
 
 createApp(App)
 	.use(router)
+	.use(VueApexCharts)
 	.mixin({
 		isUserAuthenticated
 	})
