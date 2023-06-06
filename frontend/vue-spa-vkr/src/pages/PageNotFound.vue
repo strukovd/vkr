@@ -15,12 +15,13 @@ export default {
 
 <style lang="scss" scoped>
 	.msg-block {
-		margin: auto;
-		background: white;
-		padding: 4em 12em;
+		background: #90aacb1c;
+		border-radius: 4px;
+		box-shadow: 0 0 2px 0 #172b4d1f;
+		margin: 2em 2em;
+		padding: 1em 1em 2em 1em;
+		border: 1px dashed #033d7440;
 		text-align: center;
-		border-radius: 3px;
-		box-shadow: 0px 1px 4px 0 rgba(0, 0, 0, 0.1);
 
 		.title {
 			color: #172b4d;

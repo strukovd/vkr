@@ -22,6 +22,11 @@ export class TaskController {
 		return this.taskService.getById(+id);
 	}
 
+	@Get('/find/:text')
+	async find(@Param('text') text: string) {
+		return this.taskService.find(text);
+	}
+
 	@Patch(':taskId')
 	async editById(@Param('taskId') id: string, @Body() updateTaskDto: EditTaskDto) {
 		return this.taskService.editById(+id, updateTaskDto);
