@@ -43,23 +43,28 @@ export default {
 	.pb-highest {
 		background: #fd4f4f78;
 		color: #7c0d0da6;
+		border: 1px solid #7c0d0d1a;
 	}
 	.pb-critical {
 		background: #f2ae5da1;
 		color: #7e4f16;
+		border: 1px solid #7e4f1640;
 	}
 	.pb-alarming {
 		background: linear-gradient(0deg, #efd648, #efd648, #efd648);
 		color: #786705;
+		border: 1px solid #7867052e;
 	}
 	.pb-act-soon {
 		// background: linear-gradient(0deg, #79ba5e, #79ba5e, #79ba5e);
 		background: #79ba5e66;
 		color: #265a10;
+		border: 1px solid #265a1036;
 	}
 	.pb-lowest {
 		background: #2196f36e;
 		color: #0e4570;
+		border: 1px solid #0e457030;
 	}
 	.priorityBadge {
 		display: inline-block;
