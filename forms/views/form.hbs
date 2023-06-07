@@ -1,0 +1,25 @@
+<script>
+	window.lang = {{toJson lang}}
+	window.project = {{toJson project}}
+	window.inputs = {{toJson inputs}}
+</script>
+
+<section id="form">
+	<div class="title">{{getLocale project.name lang}}</div>
+
+	<form id="form" action="/send/{{project.id}}" method="post">
+
+		{{#each inputs}}
+			{{{generateBox this @root.lang}}}
+		{{/each}}
+
+		<section class="submitbox">
+			<label>
+				<div class="wr-submitbox">
+					<div class="button">Отправить</div>
+				</div>
+			</label>
+		</section>
+	</form>
+
+</section>

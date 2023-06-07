@@ -1,0 +1,18 @@
+{
+	"HOST":"10.88.0.10",
+	"PORT": 8080,
+
+	"languages":{
+		"ru": {"caption":"Русскйи"},
+		"kg": {"caption":"Кыргызча"}
+	},
+
+
+	"pg": {
+		"user": "postgres",
+		"password": "postgres",
+		"database": "forms",
+		"host": "192.168.50.85",
+		"port": "5432"
+	}
+}

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	{{#each cssFiles}}
+		<link rel="stylesheet" href="{{this}}">
+	{{/each}}
+	{{#each jsFiles}}
+		<script src="{{this}}"></script>
+	{{/each}}
+	<title>forms.gazprom.kg</title>
+</head>
+<body>
+	<main>
+		{{{body}}}
+	</main>
+</body>
+</html>

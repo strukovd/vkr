@@ -1,0 +1,36 @@
+{
+	"port": 58588,
+
+	"pg":
+	{
+		"host":"192.168.50.85",
+		"port":"5432",
+		"user":"postgres",
+		"password":"postgres",
+		"database":"forms"
+	},
+
+	"jira": {
+		"url": "http://bs-docker-srv01/",
+		"latestRestUrl": "http://bs-docker-srv01/rest/api/latest/",
+		"user": "admin",
+		"password": "321",
+		"project_key": "CL",
+		"project_id": "11000",
+		"issue_id": "11302"
+	},
+
+
+	"sqlite": {
+		"enabled":false,
+		"path": "./storage/storage.db"
+	},
+
+
+	"workers": {
+		"checkForms": {
+			"isActive": true,
+			"interval": 30000
+		}
+	}
+}

@@ -1,0 +1,6 @@
+
+exports.init = function(app){
+
+
+
+};

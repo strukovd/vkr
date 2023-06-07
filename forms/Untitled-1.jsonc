@@ -1,0 +1,218 @@
+// Новая газификация
+{
+ "fields": {
+  "project": { "id": "10900" },
+  "summary": "POSTMAN TEST",
+  "issuetype": { "id": "10004" },
+  //Фамилия
+  "customfield_10107": "POSTMAN",
+  //Имя
+  "customfield_10108": "TEST",
+  //Отчетсво
+  "customfield_10109": "PT",
+  //Пол
+  "customfield_10300": { "id": "10266" }, //10266[Ж], 10267[М] // либо { "value": "М" }
+  //Дата рождения
+  "customfield_10110": "1997-02-21",
+  //Серия паспорта
+  "customfield_11921": "трололо",
+//Номер паспорта
+  "customfield_12500": "trest",
+//пасспорт_ид
+  "customfield_11922": "trest",
+//ИНН
+  "customfield_11915": "trest",
+//Дата выдачи документа
+  "customfield_10111": "1997-02-21",
+//Доп. номер
+  "customfield_10126": 996555222333,
+//Эл. адрес
+  "customfield_11006": "test@mail.ru",
+//Задача
+  "customfield_11828": 1235443,
+//Источник
+  "customfield_12301": { "id": "11400" }, //11400[Jira], 11401[Web]
+//Контактный номер
+  "customfield_12501": "trest",
+//Подразделение
+  "customfield_13200": "тест",
+//дивизия_ид
+  "customfield_13201": "trest",
+//тип здания
+  "customfield_13300": "тест",
+//хоус_тип_ид
+  "customfield_13302": "trest",
+//тип сектора
+  "customfield_13303": "тест",
+//сектор_тип_ид
+  "customfield_13304": "trest",
+//Организация
+  "customfield_13305": "тест",
+//организейшн_ид
+  "customfield_13306": "trest",
+//инвест программа
+  "customfield_14100": { "id": "12200" }, ///12200[2016 год], 12201[2017 год], 12202[2018 год], 12203[2019 год], 12204[2020 год], 12205[2021 год], 12300[город]
+//выбор региона
+  "customfield_14200": { "id": "12403" }, //12400[Бишкек], 12401[Токмокская ЭГС], 12402[Кантская ЭГС], 12403[Кара-Балтинская ЭГС], 12404[Ленинская ЭГС], 12405[Аманбаевская ЭГС], 12406[«Чуйгаз»]
+//технические условия
+  "customfield_10115": { "id": "10006" }, //10006[есть], 10007[нет], -1
+//характер потребления газа
+  "customfield_13101": [ {"id": "11804"} ], // 11803[отопление], 11804[горячее водоснабжение], 11805[пищеприготовление], 11806[технологические нужды]
+//тип жилья
+  "customfield_10141": { "id": "10010" }, //10010[частный сектор], 10011[государственный сектор], -1
+//Планируемые газоиспользующие приборы
+  "customfield_13100": [ {"id": "11800"} ], //11800[плита], 11801[котел], 11802[газовая колонка]
+//Названия офиса
+  "customfield_11903": { "id": "11300" }, //11300[Ахунбаева, 186/1], 11301[Горького, 22], 11302[Фучика 47], 11303[Токтогула, 45], 11304[Чуй 230], 11305[Жибек-Жолу, 150], 12800[Сокулук, Октябрьская,41], 12801[Токмок, Горького,1 подъезд 17], 12802[Кант, Маликова,6], 12803[Кара-Балта,Садовая, 112], 12804[Ленинское,Алма-Атинская,248]
+//Регион
+  "customfield_11703": "тест",
+//Район
+  "customfield_11711": "тест",
+//Населенный пункт
+  "customfield_11806": "тест",
+//Улица
+  "customfield_11713": "Улица",
+// Улица ПГТ
+  "customfield_11824": "тест",
+//пг_ид
+  "customfield_11820": "trest",
+//стрит_ид
+  "customfield_11821": "trest",
+//Номер дома
+  "customfield_11307": "trest",
+//Номер заявки
+  "customfield_11917": "trest",
+//Номер квартиры
+  "customfield_11308": "trest",
+//leadid
+  "customfield_13105": "trest",
+
+  "customfield_10121": "12400"
+ }
+}
+
+
+//VR
+{
+ "fields": {
+  "project": { "id": "11003" },
+  "summary": "POSTMAN TEST",
+  "issuetype": { "id": "11438" },
+  "customfield_12601": { "key": "CL-824552" },
+  "customfield_11903": { "id": "11300" }, //'Названия офиса'. разрешенные значения: 11300[Ахунбаева, 186/1], 11301[Горького, 22], 11302[Фучика 47], 11303[Токтогула, 45], 11304[Чуй 230], 11305[Жибек-Жолу, 150], 12800[Сокулук, Октябрьская,41], 12801[Токмок, Горького,1 подъезд 17], 12802[Кант, Маликова,6], 12803[Кара-Балта,Садовая, 112], 12804[Ленинское,Алма-Атинская,248], -1
+  "customfield_11917": "trest",
+  "customfield_11006": "test@mail.ru",
+  "customfield_12501": "trest",
+  "customfield_12301": { "value": "Web" },
+  "customfield_11915": "trest",
+  "customfield_10300": { "id": "10266" },
+  "customfield_10110": "1997-02-21",
+  "customfield_11921": "трололо",
+  "customfield_12500": "trest",
+  "customfield_10121": "assa",
+  "customfield_10111": "1997-02-21"
+ }
+}
+
+
+// PR (error)
+{
+ "fields": {
+  "project": { "id": "11302" },
+  "summary": "POSTMAN TEST",
+  "issuetype": { "id": "11408" },
+  "customfield_12601": { "key": "CL-824552" },
+  "customfield_11903": { "id": "11300" },
+  "customfield_11917": "trest",
+  "customfield_11006": "test@mail.ru",
+  "customfield_12501": "trest",
+  "customfield_12301": { "value": "Web" }
+ }
+}
+
+
+//OB:
+{
+ "fields": {
+  "project": { "id": "11005" },
+  "summary": "POSTMAN TEST",
+  "issuetype": { "id": "11444" },
+  "customfield_12601": { "key": "CL-824552" },
+  "customfield_11903": { "id": "11300" },
+  "customfield_11917": "trest",
+  "customfield_11006": "test@mail.ru",
+  "customfield_12501": "trest",
+  "customfield_12301": { "value": "Web" },
+  "customfield_11915": "trest",
+  "customfield_10300": { "id": "10266" },
+  "customfield_10110": "1997-02-21",
+  "customfield_11921": "трололо",
+  "customfield_12500": "trest",
+  "customfield_10121": "12400",
+  "customfield_10111": "1997-02-21"
+ }
+}
+
+
+// BGS: soazdnie ne vozmojno
+{
+ "fields": {
+  "project": { "id": "11002" },
+  "summary": "POSTMAN TEST",
+  "issuetype": { "id": "11435" },
+  "customfield_12601": { "key": "CL-824552" },
+  "customfield_11903": { "id": "11300" },
+  "customfield_11917": "trest",
+  "customfield_11006": "test@mail.ru",
+  "customfield_12501": "trest",
+  "customfield_12301": { "value": "Web" }
+ }
+}
+
+
+//WTR
+//Field 'customfield_12601' cannot be set. It is not on the appropriate screen, or unknown
+{
+ "fields": {
+  "project": { "id": "10900" },
+  "summary": "POSTMAN TEST",
+  "issuetype": { "id": "10004" },
+  "customfield_12601": { "key": "CL-834802" },
+  "customfield_11903": { "id": "11300" },
+  "customfield_11917": "trest",
+  "customfield_11006": "test@mail.ru",
+  "customfield_12501": "trest",
+  "customfield_12301": { "value": "Web" },
+  "customfield_11915": "trest",
+  "customfield_10300": { "id": "10266" },
+  "customfield_10110": "1997-02-21",
+  "customfield_11921": "трололо",
+  "customfield_12500": "trest",
+  "customfield_10121": "12400",
+  "customfield_10111": "1997-02-21"
+ }
+}
+
+
+// US
+// Field 'customfield_12601' cannot be set. It is not on the appropriate screen, or unknown
+{
+ "fields": {
+  "project": { "id": "10900" },
+  "summary": "POSTMAN TEST",
+  "issuetype": { "id": "10004" },
+  "customfield_12601": { "key": "CL-834802" },
+  "customfield_11903": { "id": "11300" },
+  "customfield_11917": "trest",
+  "customfield_11006": "test@mail.ru",
+  "customfield_12501": "trest",
+  "customfield_12301": { "value": "Web" },
+  "customfield_11915": "trest",
+  "customfield_10300": { "id": "10266" },
+  "customfield_10110": "1997-02-21",
+  "customfield_11921": "трололо",
+  "customfield_12500": "trest",
+  "customfield_10121": "12400",
+  "customfield_10111": "1997-02-21"
+ }
+}

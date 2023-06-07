@@ -1,0 +1,375 @@
+.meta {
+	display:none;
+}
+
+.box {
+	margin: 2em 0;
+}
+
+.boxName {
+	font-size: 16px;
+    color: #6d6e71;
+	margin-bottom: .2em;
+}
+
+
+
+
+
+
+
+/* TEXTBOX */
+.textbox {
+
+}
+.wr-textbox input[type=text] {
+	width: 100%;
+    height: 55px;
+    border-radius: 3px;
+    border: solid 1px #c6c8cd;
+    padding: 15px;
+    font-size: 20px;
+    /* margin-bottom: 20px; */
+	box-sizing: border-box;
+}
+.wr-textbox input[type=text]:focus{
+	outline-color:#0079c1;
+	background: #e8f0fe;
+}
+
+/* .textbox.invalidBox .boxName {
+	color:red;
+} */
+.textbox.invalidBox .wr-textbox input[type=text] {
+	background: #fd5f5f14;
+    border-color: #ff5c5c;
+	outline:none;
+}
+
+.textbox .errorDesc {
+	color: red;
+    font: .9em "Arial";
+    margin: 6px 0;
+}
+/* .wr-textbox input[type=text]:focus ~ .boxName{
+	color:#0079c1;
+} */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* MEMOBOX */
+.memobox {
+
+}
+.wr-memobox textarea {
+	width: 100%;
+    height: 200px;
+    border-radius: 3px;
+    border: solid 1px #c6c8cd;
+    padding: 15px;
+    font-size: 20px;
+    /* margin-bottom: 20px; */
+	box-sizing: border-box;
+	resize: vertical;
+}
+.wr-memobox textarea:focus{
+	outline-color:#0079c1;
+	background: #e8f0fe;
+}
+
+/* .memobox.invalidBox .boxName {
+	color:red;
+} */
+.memobox.invalidBox .wr-memobox textarea {
+	background: #fd5f5f14;
+    border-color: #ff5c5c;
+	outline:none;
+}
+
+.memobox .errorDesc {
+	color: red;
+    font: .9em "Arial";
+    margin: 6px 0;
+}
+/* .wr-memobox textarea:focus ~ .boxName{
+	color:#0079c1;
+} */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* SELECTBOX */
+.wr-selectbox select {
+	width: 100%;
+    height: 55px;
+    border-radius: 3px;
+    border: solid 1px #c6c8cd;
+	background-color:#fff;
+    padding: 15px;
+    font-size: 20px;
+    margin-bottom: 20px;
+	box-sizing: border-box;
+}
+.wr-selectbox select:focus{
+	outline-color:#0079c1;
+	background: #e8f0fe;
+}
+
+.selectbox.invalidBox .wr-selectbox select {
+	background: #fd5f5f14;
+    border-color: #ff5c5c;
+	outline:none;
+}
+
+.selectbox .errorDesc {
+	color: red;
+    font: .9em "Arial";
+    margin: 6px 0;
+}
+
+
+
+
+
+
+/* CHECKBOX */
+.checkbox {
+
+}
+
+.checkbox .boxName{
+	font-size: 16px;
+    color: #6d6e71;
+	margin: auto 0;
+}
+
+.check_mark {
+	flex: auto 0 0;
+	display: inline-block;
+	height: 16px;
+	width: 16px;
+	border: 1px solid #0079c1;
+	border-radius:3px;
+	padding: 2px;
+	margin-right: .4em;
+}
+
+.wr-checkbox {
+	display: flex;
+	user-select:none;
+}
+
+.wr-checkbox > input {
+	display:none;
+}
+
+.wr-checkbox input:checked + .check_mark {
+	visibility: visible;
+	background:#e8f0fe;
+	border-color:#0079c1;
+}
+
+.wr-checkbox input:checked ~ .boxName {
+	color:#0079c1;
+}
+
+.wr-checkbox input:checked + .check_mark > svg {
+	stroke: #1379c1;
+	stroke-width: 2px;
+}
+
+.wr-checkbox input:not(:checked) + .check_mark > svg {
+	visibility: hidden;
+}
+
+.checkbox.invalidBox .boxName {
+	color:red;
+}
+
+.checkbox.invalidBox .check_mark {
+    background: #fee8e8;
+    border-color: #ff5959;
+}
+
+
+
+
+
+
+
+/* FILEBOX */
+.filebox {
+
+}
+
+.filebox .boxName{
+	font-size: 16px;
+    color: #6d6e71;
+	margin-bottom: .4em;
+}
+
+.wr-filebox {
+	display: flex;
+	user-select:none;
+}
+
+.wr-filebox > label > input {
+	display:none;
+}
+
+.wr-filebox .fileButton {
+	border:1px solid #0079c1;
+	border-radius:3px;
+	background:#e8f0fe;
+	padding:.6em .6em;
+	color:#0079c1;
+	cursor: pointer;
+}
+.wr-filebox .fileButton:focus{
+	outline-color:#0079c1;
+	background: #e8f0fe;
+}
+
+.wr-filebox .fileNames {
+	margin: 0 1em;
+}
+
+.wr-filebox .fileItem {
+	display: flex;
+	padding: .3em;
+	border-bottom: 1px solid #d3d3d3;
+}
+
+.wr-filebox .fileDelWr {
+	display: flex;
+}
+
+.wr-filebox .fileDelBtn {
+	font-size: 11px;
+    font-weight: 700;
+    color: #d52c2c;
+    background: #efefef;
+    padding: .3em .6em;
+    border-radius: 3px;
+    margin: auto;
+	cursor: pointer;
+}
+
+.wr-filebox .fileName {
+	color: #6d728b;
+	margin: auto .5em;
+}
+
+.filebox .errorDesc {
+	color: red;
+    font: .9em "Arial";
+    margin: 6px 0;
+}
+
+.filebox.invalidBox .fileButton {
+    background: #fee8e8;
+    border-color: #ff5959;
+	color:red;
+}
+
+.filebox.invalidBox .fileName {
+    display: none;
+}
+
+
+
+#title_personal_data
+{
+    font-size: 1.6em;
+    font-weight: 600;
+    color: #464646;
+    margin: 1.4em 0 .7em 0;
+    text-align: center;
+    /* padding: 0 0 .3em 0; */
+    /* border-bottom: 1px dotted #c7c7c7; */
+}
+
+
+
+
+/* SUBMIT */
+.submitbox {
+
+}
+
+.wr-submitbox {
+
+}
+
+.wr-submitbox .button {
+	font-size: 20px;
+    border: 1px solid #0079c1;
+    border-radius: 3px;
+    background: #e8f0fe;
+    line-height: 3em;
+    color: #0079c1;
+    cursor: pointer;
+    text-align: center;
+}
+
+.wr-submitbox .button:focus{
+	outline-color:#0079c1;
+	background: #e8f0fe;
+}
+/*
+.check_mark {
+	flex: auto 0 0;
+	display: inline-block;
+	height: 16px;
+	width: 16px;
+	border: 1px solid #0079c1;
+	border-radius:3px;
+	padding: 2px;
+	margin-right: .4em;
+}
+
+
+
+.wr-checkbox input:checked + .check_mark {
+	visibility: visible;
+	background:#e8f0fe;
+	border-color:#0079c1;
+}
+
+.wr-checkbox input:checked ~ .boxName {
+	color:#0079c1;
+}
+
+.wr-checkbox input:checked + .check_mark > svg {
+	stroke: #1379c1;
+	stroke-width: 2px;
+}
+
+.wr-checkbox input:not(:checked) + .check_mark > svg {
+	visibility: hidden;
+} */

@@ -1,0 +1,23 @@
+{
+  "name": "forms-fetcher",
+  "version": "1.1.38",
+  "description": "",
+  "main": "app.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Strukov Dmitriy <strukoff97@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "form-data": "^4.0.0",
+    "https": "^1.0.0",
+    "moment": "^2.29.1",
+    "node-fetch": "^2.6.7",
+    "pg": "^8.5.1"
+  }
+}

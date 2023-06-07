@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body {
+			margin: 0;
+			font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+			font-size: 14px;
+			line-height: 1.42857143;
+			color: #333;
+			background-color: #fff;
+		}
+		.msg {
+			margin:30vh 0 0 0;
+			display:flex;
+		}
+		.center {
+			margin:auto;
+			text-align: center;
+		}
+		.title {
+			color: #337ab7;
+    		text-align: center;
+			font-size: 36px;
+			font-weight: 400;
+			margin-bottom: 20px;
+		}
+
+		.desc{
+			margin: .2em 0;
+		}
+
+		a{
+			color: #337ab7;
+    		text-decoration: none;
+		}
+	</style>
+</head>
+<body>
+	<section class="msg">
+		<div class="center">
+			<h3 class="title">Вы успешно отправили форму</h3>
+			<div class="desc">Наши специалисты свяжутся с Вами в скором времени</div>
+			{{!-- <a href="/">Посмотреть соглашение</a> --}}
+			{{!-- <a href="/">Посмотреть заявление</a> --}}
+			<a href="/">Вернутся на главную</a>
+		</div>
+	</section>
+</body>
+</html>
