@@ -14,7 +14,7 @@ export class TaskService {
 	async create(createTaskDto: CreateTaskDto) {
 		const query = `INSERT INTO tasks
 			(title, description, project_key, priority, assignee, status, creator)
-			VALUES ($1, $2, $3,$4, $5, (SELECT from_status FROM transitions tr WHERE tr.project_key = $3 AND tr.first_status = true), $6);`;
+			VALUES ($1, $2, $3::varchar(50), $4, $5, (SELECT from_status FROM transitions tr WHERE tr.project_key = $3::varchar(50) AND tr.first_status = true), $6);`;
 		const params = [
 			createTaskDto.title,
 			createTaskDto.description,
