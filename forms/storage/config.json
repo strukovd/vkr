@@ -1,6 +1,6 @@
 {
-	"HOST":"10.88.0.10",
-	"PORT": 8080,
+	"HOST":"0.0.0.0",
+	"PORT": 7070,
 
 	"languages":{
 		"ru": {"caption":"Русскйи"},
@@ -9,10 +9,10 @@
 
 
 	"pg": {
-		"user": "postgres",
-		"password": "postgres",
+		"user": "vkr",
+		"password": "vkr",
 		"database": "forms",
-		"host": "192.168.50.85",
+		"host": "0.0.0.0",
 		"port": "5432"
 	}
 }

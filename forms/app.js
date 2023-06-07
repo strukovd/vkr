@@ -3,7 +3,7 @@ const hbs = require("hbs");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 
-global.storagePath = `/storage`;
+global.storagePath = `./storage`;
 
 const config = global.config = require(`${global.storagePath}/config.json`);
 const router = require('./router/router');
