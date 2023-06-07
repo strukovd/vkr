@@ -3,23 +3,20 @@
 
 	"pg":
 	{
-		"host":"192.168.50.85",
+		"host":"0.0.0.0",
 		"port":"5432",
-		"user":"postgres",
-		"password":"postgres",
+		"user":"vkr",
+		"password":"vkr",
 		"database":"forms"
 	},
 
-	"jira": {
-		"url": "http://bs-docker-srv01/",
-		"latestRestUrl": "http://bs-docker-srv01/rest/api/latest/",
-		"user": "admin",
-		"password": "321",
-		"project_key": "CL",
-		"project_id": "11000",
-		"issue_id": "11302"
+	"tasksTrackerPg": {
+		"host":"0.0.0.0",
+		"port":"5432",
+		"user":"vkr",
+		"password":"vkr",
+		"database":"vkr"
 	},
-
 
 	"sqlite": {
 		"enabled":false,

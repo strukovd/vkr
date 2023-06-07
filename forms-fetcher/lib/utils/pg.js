@@ -11,6 +11,14 @@ const pgconf = {
 	database: config.pg.database
 };
 
+const taskTrackerPgconf = {
+	host: config.tasksTrackerPg.host,
+	port: config.tasksTrackerPg.port,
+	user: config.tasksTrackerPg.user,
+	password: config.tasksTrackerPg.password,
+	database: config.tasksTrackerPg.database
+};
+
 
 
 exports.getConnection = async function() {
@@ -36,6 +44,24 @@ exports.getConnection = async function() {
 exports.execSync = async function(query, params) {
 	try {
 		const pool = await new Pool(pgconf);
+		const client = await pool.connect();
+		const result = await client.query(query, params);
+		client.end();
+		return result.rows;
+	}
+	catch (error) {
+		log.error(`Postgres: При попытке выполнить запрос произошла ошибка!`, error);
+		log.trace(`Запрос: ${query}`);
+		log.trace(`Памаметры: ${JSON.stringify(params)}`);
+	}
+};
+
+
+
+
+exports.execSyncToTaskTraker = async function(query, params) {
+	try {
+		const pool = await new Pool(taskTrackerPgconf);
 		const client = await pool.connect();
 		const result = await client.query(query, params);
 		client.end();

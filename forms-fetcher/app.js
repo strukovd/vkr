@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 
-global.fullStoragePath = `/storage`;
+global.fullStoragePath = `./storage`;
 
 const config = global.config = require(`${global.fullStoragePath}/config.json`);
 const bodyParser = require("body-parser");
