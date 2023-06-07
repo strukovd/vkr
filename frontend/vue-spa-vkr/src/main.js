@@ -7,6 +7,8 @@ import TaskDetailPage from './pages/TaskDetailPage.vue';
 import CreateTask from './pages/CreateTask.vue';
 import LoginPage from './pages/LoginPage.vue';
 import ReportsPage from './pages/ReportsPage.vue';
+import SettingUsersPage from './pages/SettingUsersPage.vue';
+import CreateUser from './pages/CreateUser.vue';
 import PageNotFound from './pages/PageNotFound.vue';
 import './styles/index.css';
 import './styles/notification.scss';
@@ -34,8 +36,22 @@ const router = createRouter({
 			component: LoginPage
 		},
 		{
-			path: "/users",
-			component: null
+			path: "/setting",
+			meta: { requiresAuth: true },
+			children: [
+				{
+					path: "users",
+					component: SettingUsersPage
+				},
+				{
+					path: "createUser",
+					component: CreateUser
+				},
+				{
+					path: "projects",
+					component: null
+				}
+			]
 		},
 		{
 			path: "/reports",
