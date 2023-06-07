@@ -10,7 +10,7 @@
 					Создать пользователя
 				</button>
 			</div>
-			<div id="userList">
+			<div v-if="Array.isArray(userList) && userList.length" id="userList">
 				<table>
 					<tr>
 						<th>ID</th>
@@ -20,29 +20,13 @@
 						<th>Создан</th>
 						<th>Последний вход</th>
 					</tr>
-					<tr>
-						<td>1</td>
-						<td>Струков Дмитрий Геннадьевич</td>
-						<td><span class="login">strukovd</span></td>
-						<td>strukoff97@gmail.com</td>
-						<td class="time">22.03.2023 10:54</td>
-						<td class="time">05.07.2023 22:13:21</td>
-					</tr>
-					<tr>
-						<td>2</td>
-						<td>Администратор</td>
-						<td><span class="login">admin</span></td>
-						<td>admin@gmail.com</td>
-						<td class="time">22.03.2023 10:54</td>
-						<td class="time">05.07.2023 22:13:21</td>
-					</tr>
-					<tr>
-						<td>3</td>
-						<td>User</td>
-						<td><span class="login">user</span></td>
-						<td>just-simple-user@gmail.com</td>
-						<td class="time">22.03.2023 10:54</td>
-						<td class="time">05.07.2023 22:13:21</td>
+					<tr v-for="user of userList" :key="user.id">
+						<td>{{ user.id }}</td>
+						<td>{{ user.display_name }}</td>
+						<td><span class="login">{{ user.login }}</span></td>
+						<td>{{ user.email }}</td>
+						<td class="time">{{ user.created }}</td>
+						<td class="time">{{ user.last_auth }}</td>
 					</tr>
 				</table>
 			</div>
@@ -51,8 +35,29 @@
 </template>
 
 <script>
-export default {
+import axios from 'axios';
 
+export default {
+	data() {
+		return {
+			userList: [],
+		};
+	},
+	mounted() {
+		this.fetchUsers();
+	},
+	methods: {
+		async fetchUsers() {
+			axios
+				.get(`http://localhost:3000/user`)
+				.then((response) => {
+					this.userList = response.data;
+				})
+				.catch((error) => {
+					console.error(error);
+				});
+		}
+	}
 }
 </script>
 

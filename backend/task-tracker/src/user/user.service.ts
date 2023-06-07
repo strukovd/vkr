@@ -9,12 +9,20 @@ export class UserService {
 		private readonly connection: DataSource
 	) {}
 
-	// create(createUserDto: CreateUserDto) {
-	// 	return 'This action adds a new user';
-	// }
+	create(createUserDto: CreateUserDto) {
+		const query = `INSERT INTO users (login, password, email, display_name)
+			VALUES ($1, $2, $3, $4);`;
+		const params = [
+			createUserDto.login,
+			createUserDto.password,
+			createUserDto.email,
+			createUserDto.display_name
+		];
+    	return this.connection.query(query, params);
+	}
 
 	findAll() {
-		const query = `SELECT id, login, email, display_name
+		const query = `SELECT id, login, email, display_name, created, last_auth
 			FROM users;`;
     	return this.connection.query(query);
 	}

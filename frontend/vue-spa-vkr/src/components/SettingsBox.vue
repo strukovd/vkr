@@ -1,7 +1,7 @@
 <template>
-		<div v-if="displayUserBox" id="settings-box">
+		<div v-if="displayUserBox" @click="menuIsDisplayed=!menuIsDisplayed" id="settings-box">
 			<img src="@/assets/icons/settings.svg" alt="">
-			<menu id="settingsMenu">
+			<menu v-if="menuIsDisplayed" id="settingsMenu">
 				<li @click="$router.replace(`/setting/projects`)">Управление проектами</li>
 				<li @click="$router.replace(`/setting/users`)">Усправление пользователями</li>
 			</menu>
@@ -10,7 +10,11 @@
 
 <script>
 export default {
-	name: 'SearchBox',
+	data() {
+		return {
+			menuIsDisplayed: false
+		};
+	},
 	methods: {
 		displayUserBox() {
 			return this.isUserAuthenticated();
@@ -33,7 +37,7 @@ export default {
 
 		#settingsMenu {
 			position: absolute;
-			top:2em;
+			top:3em;
 			right:0;
 			padding:0;
 			margin:0;

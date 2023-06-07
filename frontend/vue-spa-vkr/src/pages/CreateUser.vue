@@ -9,7 +9,7 @@
 				<table>
 					<tr>
 						<td><span class="label">Имя:</span></td>
-						<td><span><input v-model="name" type="text"></span></td>
+						<td><span><input v-model="display_name" type="text"></span></td>
 					</tr>
 					<tr>
 						<td><span class="label">Логин:</span></td>
@@ -38,7 +38,7 @@ import axios from 'axios';
 export default {
 	data() {
 		return {
-			name: "",
+			display_name: "",
 			login: "",
 			password: "",
 			email: ""
@@ -46,23 +46,19 @@ export default {
 	},
 	methods: {
 		sendForm() {
-			this.createTask();
+			this.createUser();
 		},
-		createTask() {
+		createUser() {
 			axios
-				.post(`http://localhost:3000/task`, {
-					projectKey: this.projectKey,
-					title: this.title,
-					description: this.description,
-					priority: this.priority,
-					assignee: this.assignee,
-					creator: this.creator,
+				.post(`http://localhost:3000/user`, {
+					display_name: this.display_name,
+					login: this.login,
+					password: this.password,
+					email: this.email,
 				})
 				.then(() => {
-					Notification.success("Задача успешно создана!");
-					this.$router.push("/");
-					// if (Array.isArray(response.data) && response.data.length) {
-					// }
+					Notification.success("Пользователь успешно создан!");
+					this.$router.push("/setting/users");
 				})
 				.catch((error) => {
 					Notification.error(error);
@@ -180,63 +176,3 @@ export default {
 		}
 	}
 </style>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--
-
-<script>
-
-
-export default {
-	
-}
-</script>
-
-<style lang="scss" scoped>
-	
-</style>
-
- -->

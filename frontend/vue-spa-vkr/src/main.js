@@ -7,7 +7,7 @@ import TaskDetailPage from './pages/TaskDetailPage.vue';
 import CreateTask from './pages/CreateTask.vue';
 import LoginPage from './pages/LoginPage.vue';
 import ReportsPage from './pages/ReportsPage.vue';
-import SettingUsersPage from './pages/SettingUsersPage.vue';
+import UsersListPage from './pages/UsersListPage.vue';
 import CreateUser from './pages/CreateUser.vue';
 import PageNotFound from './pages/PageNotFound.vue';
 import './styles/index.css';
@@ -41,7 +41,7 @@ const router = createRouter({
 			children: [
 				{
 					path: "users",
-					component: SettingUsersPage
+					component: UsersListPage
 				},
 				{
 					path: "createUser",
