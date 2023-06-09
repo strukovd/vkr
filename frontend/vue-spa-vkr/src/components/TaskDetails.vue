@@ -101,7 +101,7 @@ export default {
 				color: #172b4db5;
 				background: #90aacb1c;
 				border-radius: 4px;
-				white-space: pre;
+				white-space: pre-wrap;
 			}
 		}
 
