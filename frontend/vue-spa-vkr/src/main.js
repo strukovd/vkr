@@ -75,9 +75,8 @@ router.beforeEach((to, from, next) => {
 
 function isUserAuthenticated() {
 	console.log(sessionStorage.getItem('username'));
-	const res = sessionStorage.getItem('username') === "admin";
-	console.log(res);
-	return res;
+	const success = Boolean( sessionStorage.getItem('username') );
+	return success;
 }
 
 

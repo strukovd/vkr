@@ -21,6 +21,22 @@ export class UserService {
     	return this.connection.query(query, params);
 	}
 
+	auth(formData) {
+		console.log(`Вызван метод auth`);
+		console.log(`formData: ${JSON.stringify(formData)}`);
+
+		const query = `SELECT id, login, display_name, email
+			FROM users
+			WHERE login = $1 AND password = $2;`;
+		const params = [
+			formData.login,
+			formData.password
+		];
+    	const res = this.connection.query(query, params);
+		console.log(JSON.stringify(res));
+		return res;
+	}
+
 	findAll() {
 		const query = `SELECT id, login, email, display_name, created, last_auth
 			FROM users;`;
