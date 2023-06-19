@@ -8,6 +8,7 @@ import CreateTask from './pages/CreateTask.vue';
 import LoginPage from './pages/LoginPage.vue';
 import ReportsPage from './pages/ReportsPage.vue';
 import UsersListPage from './pages/UsersListPage.vue';
+import ProjectListPage from './pages/ProjectListPage.vue';
 import CreateUser from './pages/CreateUser.vue';
 import PageNotFound from './pages/PageNotFound.vue';
 import './styles/index.css';
@@ -49,7 +50,7 @@ const router = createRouter({
 				},
 				{
 					path: "projects",
-					component: null
+					component: ProjectListPage
 				}
 			]
 		},

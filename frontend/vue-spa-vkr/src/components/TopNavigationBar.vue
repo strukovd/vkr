@@ -1,7 +1,7 @@
 <template>
 	<nav id="top-nav-bar">
 		<ul>
-			<li>Проекты</li>
+			<li @click="$router.replace(`/setting/projects`)">Проекты</li>
 			<li @click="$router.replace(`/`)">Список задач</li>
 		</ul>
 	</nav>
