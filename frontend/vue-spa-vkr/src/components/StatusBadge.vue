@@ -14,7 +14,6 @@ export default {
 	},
 	computed: {
 		computedStatusClass() {
-			console.log(`ss: ${this.status}`);
 			if(!this.status || this.status.length < 2) {
 				return `badge0`;
 			}

@@ -7,6 +7,12 @@ import { UpdateUserDto } from './dto/update-user.dto';
 export class UserController {
 	constructor(private readonly userService: UserService) {}
 
+	@Post("auth") // TODO: вынести
+	auth(@Body() formData) {
+		console.log(`formData: ${JSON.stringify(formData)}`);
+		return this.userService.auth(formData);
+	}
+
 	@Post()
 	create(@Body() createUserDto: CreateUserDto) {
 		return this.userService.create(createUserDto);

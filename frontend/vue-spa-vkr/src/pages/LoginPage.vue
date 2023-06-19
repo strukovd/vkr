@@ -9,7 +9,7 @@
 				</tr>
 				<tr>
 					<td><span class="fieldLabel">Пароль:</span></td>
-					<td><input v-model="passwod" type="password"/></td>
+					<td><input v-model="password" type="password"/></td>
 				</tr>
 				<tr>
 					<td colspan="2"><input @click.prevent="signin" type="submit" value="Войти"></td>
@@ -20,24 +20,42 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
 	data() {
 		return {
 			username: "",
-			passwod: ""
+			password: ""
 		};
 	},
 	methods: {
-		signin() {
-			console.log(this.username);
-			if(this.username === "admin" && this.passwod === "123") {
-				sessionStorage.setItem('username', 'admin');
-				this.$router.push("/");
-			}
-			else {
-				Notification.error("Неверный логин или пароль");
-			}
-		}
+		async signin() {
+			console.log(`Вызван метод signin`);
+
+			axios
+                .post(`http://localhost:3000/user/auth`, {
+					login: this.username,
+					password: this.password
+				})
+                .then((response) => {
+                if (Array.isArray(response.data) && response.data.length) {
+					console.log(`response: ${JSON.stringify(response.data[0])}`);
+                    this.userData = response.data[0];
+
+					// id, login, display_name, email
+					// id, login, display_name, email
+					sessionStorage.setItem('username', this.userData.login);
+					this.$router.push("/");
+                }
+				else {
+					Notification.error("Неверный логин или пароль");
+				}
+            })
+                .catch((error) => {
+                console.error(error);
+            });
+		},
 	}
 }
 </script>
