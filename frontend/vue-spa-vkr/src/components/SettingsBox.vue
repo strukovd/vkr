@@ -4,6 +4,7 @@
 			<menu v-if="menuIsDisplayed" id="settingsMenu">
 				<li @click="$router.replace(`/setting/projects`)">Управление проектами</li>
 				<li @click="$router.replace(`/setting/users`)">Усправление пользователями</li>
+				<li @click="$router.replace(`/setting/users`)">Выход</li>
 			</menu>
 		</div>
 </template>
