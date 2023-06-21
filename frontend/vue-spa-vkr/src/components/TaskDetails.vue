@@ -18,6 +18,7 @@
 				</div>
 			</div>
 			<div class="description">{{ task.description }}</div>
+			<CommentsSection/>
 		</article>
 		<aside>
 			<div class="customTable">
@@ -47,10 +48,11 @@ import axios from 'axios';
 import PriorityBadge from './PriorityBadge.vue';
 import StatusBadge from './StatusBadge.vue';
 import TransitionsBar from './TransitionsBar.vue';
+import CommentsSection from './CommentsSection.vue';
 
 
 export default {
-	components: { PriorityBadge, StatusBadge, TransitionsBar },
+	components: { PriorityBadge, StatusBadge, TransitionsBar, CommentsSection },
     mounted() {
         this.fetchTask();
     },

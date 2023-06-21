@@ -1,9 +1,9 @@
 <template>
 	<main id="reports">
 		<aside id="left-side">
-			<div class="wr-chart">
-				<h1>Заявок поступило</h1>
-				<apexchart width="500" type="bar" :options="options" :series="series"></apexchart>
+			<div v-if="chartsData.tasksCreated" class="wr-chart">
+				<h1>{{ chartsData.tasksCreated.title }}</h1>
+				<apexchart width="500" type="bar" :options="chartsData.tasksCreated.options" :series="chartsData.tasksCreated.series"></apexchart>
 			</div>
 			<div class="wr-chart">
 				<h1>Заявок исполнено</h1>
@@ -24,11 +24,44 @@
 </template>
 
 <script>
+import axios from 'axios';
 // import VueApexCharts from 'vue-apexcharts';
 
 export default {
+	mounted() {
+		axios
+			.get(`http://localhost:3000/charts/tasksCreated`)
+			.then((response) => {
+				const dates = [];
+				const datas = [];
+				for (const row of response.data) {
+					dates.push(row.month_name);
+					datas.push(row.task_count);
+				}
+
+				this.chartsData["tasksCreated"] = {
+					title: "Заявок поступило",
+					options: {
+						chart: {
+							id: 'tasksCreated'
+						},
+						xaxis: {
+							categories: dates
+						}
+					},
+					series: [{
+						name: 'series-1',
+						data: datas
+					}]
+				};
+			})
+			.catch((error) => {
+				console.error(error);
+			});
+	},
 	data() {
 		return {
+			chartsData: {},
 			options: {
 				chart: {
 					id: 'vuechart-example'

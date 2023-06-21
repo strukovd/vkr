@@ -4,6 +4,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { TaskModule } from './task/task.module';
 import { ProjectModule } from './project/project.module';
 import { UserModule } from './user/user.module';
+import { CommentModule } from './comment/comment.module';
+import { ChartsModule } from './charts/charts.module';
 
 @Module({
 	imports: [
@@ -32,7 +34,11 @@ import { UserModule } from './user/user.module';
 
 		ProjectModule,
 
-		UserModule
+		UserModule,
+
+		CommentModule,
+
+		ChartsModule
 	],
 	controllers: [],
 	providers: [],
