@@ -1,6 +1,6 @@
 <template>
 	<div id="tasks-container">
-		<table>
+		<table v-if="tasksLoaded">
 			<thead>
 				<tr>
 					<th @click="sortBy(`id`)" colspan="2" :class="{'up': sortedBy === 'id' && !sortedReverse, 'down': sortedBy === 'id' && sortedReverse}">ID</th>
@@ -27,6 +27,13 @@
 				</router-link>
 			</tbody>
 		</table>
+		<div v-else style="
+			background: #FAFAFACC;
+			font-size: 2em;
+			color: #172b4d59;
+			text-align: center;
+			line-height: 5em;
+		">Загрузка данных...</div>
 	</div>
 </template>
 
@@ -48,6 +55,7 @@ export default {
 					priority: "High"
 				}
 			],
+			tasksLoaded: false,
 			sortedBy: null,
 			sortedReverse: false
 		};
@@ -61,6 +69,7 @@ export default {
 				.get(`http://localhost:3000/task`)
 				.then((response) => {
 					this.tasks = response.data;
+					this.tasksLoaded = true;
 				})
 				.catch((error) => {
 					console.error(error);
