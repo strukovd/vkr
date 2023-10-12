@@ -1,5 +1,6 @@
 <template>
-	<HeaderBar></HeaderBar>
+	<component :is="layout"></component>
+	<!-- <HeaderBar></HeaderBar>
 	<main id="main">
 		<section class="left-section">
 			<LeftPanel></LeftPanel>
@@ -7,17 +8,26 @@
 		<section class="right-section">
 			<router-view></router-view>
 		</section>
-	</main>
+	</main> -->
 </template>
 
 <script>
 import LeftPanel from './components/LeftPanel.vue';
 import HeaderBar from './components/HeaderBar.vue';
+import UnauthorizedLayout from './components/layouts/UnauthorizedLayout.vue';
+import AuthorizedLayout from './components/layouts/AuthorizedLayout.vue';
 
 export default {
 	components: {
 		HeaderBar,
-		LeftPanel
+		LeftPanel,
+		UnauthorizedLayout,
+		AuthorizedLayout
+	},
+	computed: {
+		layout() {
+			return "UnauthorizedLayout";
+		}
 	}
 }
 </script>
